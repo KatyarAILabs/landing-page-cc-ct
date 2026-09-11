@@ -36,8 +36,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Publish the katyar site in v2/ as the site root
+          path: './v2'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
