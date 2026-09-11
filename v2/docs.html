@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docs — katyar</title>
+<meta name="description" content="katyar documentation: deploy the connector in your cloud, approve redaction rules, choose a task, add verifiers and promote your own model once it reaches parity.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="stylesheet" href="docs.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="index.html"><span class="sq"></span> katyar</a>
+    <nav>
+      <a href="index.html#pipeline">Platform</a>
+      <a href="research.html">Research</a>
+      <a href="use-cases.html">Use cases</a>
+      <a href="docs.html" aria-current="page">Docs</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="pill o" href="index.html#start">Sign in</a>
+    <a class="pill" href="index.html#start">Start with one agent <span class="ar">→</span></a>
+    <details class="mnav">
+      <summary aria-label="Menu"><span></span></summary>
+      <div class="mnav-panel">
+        <a href="index.html#pipeline">Platform</a>
+        <a href="research.html">Research</a>
+        <a href="use-cases.html">Use cases</a>
+        <a href="docs.html" aria-current="page">Docs</a>
+        <a href="about.html">About</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<!-- ============ DOCS HERO (compact) ============ -->
+<section class="sec band phero dhero">
+  <div class="w">
+    <div>
+      <div class="crumbs"><a href="index.html">katyar</a><i>/</i><span>Docs</span></div>
+      <span class="eb lab br rv">Docs</span>
+      <h1 class="rv">Build with katyar, <span class="it">one task at a time.</span></h1>
+    </div>
+    <div class="dsearch rv" role="search">
+      <label class="lab" for="docSearch">Search the docs</label>
+      <div class="dsearch-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        <input id="docSearch" type="search" placeholder="Try “redaction” or “rollback”" autocomplete="off" spellcheck="false">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <p class="dres" id="dRes" aria-live="polite"></p>
+      <div class="dquick"><span class="lab">Popular</span><a href="#deploy">Deploy the connector</a><a href="#verifiers">Custom verifiers</a><a href="#parity">Promote &amp; roll back</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOCS LAYOUT ============ -->
+<section class="docs-sec">
+  <div class="w docs">
+
+    <aside class="dside" aria-label="Documentation">
+      <details class="dbrowse" open>
+        <summary>Browse docs</summary>
+        <nav class="dnav">
+          <div class="dgroup">
+            <h4>Get started</h4>
+            <ul>
+              <li><a href="#" data-k="intro what is katyar">Overview</a></li>
+              <li><a href="#top" aria-current="page" data-k="setup install deploy connector redaction task verifiers parity promote first">Quickstart</a></li>
+              <li><a href="#" data-k="architecture loop cc ct pipeline">How katyar works</a></li>
+            </ul>
+          </div>
+          <div class="dgroup">
+            <h4>Concepts</h4>
+            <ul>
+              <li><a href="#" data-k="cc capture traces gateway tool calls outcomes">Continuous collection</a></li>
+              <li><a href="#" data-k="checks reward library custom abstain">Verifiers</a></li>
+              <li><a href="#" data-k="golden set dataset dedup versions export">Golden datasets</a></li>
+              <li><a href="#" data-k="ct training rl grpo open model">Continuous training</a></li>
+              <li><a href="#" data-k="parity threshold promote rollback canary">Parity gate</a></li>
+            </ul>
+          </div>
+          <div class="dgroup">
+            <h4>Guides</h4>
+            <ul>
+              <li><a href="#" data-k="connector gateway mirror deploy aws gcp azure">Connect your gateway</a></li>
+              <li><a href="#" data-k="verifier python sdk test publish abstain">Write a custom verifier</a></li>
+              <li><a href="#" data-k="pilot one agent scoping">Run a pilot</a></li>
+              <li><a href="#" data-k="promote rollback canary threshold routing">Promote and roll back a task</a></li>
+            </ul>
+          </div>
+          <div class="dgroup">
+            <h4>Reference</h4>
+            <ul>
+              <li><a href="#" data-k="command line katyar login tasks verifiers promote">CLI</a></li>
+              <li><a href="#" data-k="yaml config settings redaction">Configuration</a></li>
+              <li><a href="#" data-k="sdk python reward trace outcome">Verifier API</a></li>
+              <li><a href="#" data-k="redaction pii privacy encryption data residency compliance">Security &amp; data handling</a></li>
+            </ul>
+          </div>
+          <p class="dempty" hidden>No pages match “<b></b>”. Try “verifier” or “parity”.</p>
+        </nav>
+      </details>
+    </aside>
+
+    <article id="top" class="dart">
+      <div class="dhead">
+        <div class="dpath">Get started <i>/</i> Quickstart</div>
+        <h2 class="dtitle">Quickstart</h2>
+        <p class="dlede">Go from an agent in production to verified examples and a parity score. You'll deploy the connector inside your own cloud, approve what gets redacted, pick one task, attach verifiers, and promote your model once it matches the frontier.</p>
+        <div class="dfacts">
+          <div><span class="lab">Setup</span><b>About 30 minutes</b></div>
+          <div><span class="lab">Runs in</span><b>Your cloud account</b></div>
+          <div><span class="lab">You need</span><b>Admin on one agent</b></div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <h2 id="before">Before you start</h2>
+        <ul>
+          <li>An agent in production that calls a model through an AI gateway or SDK.</li>
+          <li>Admin access to the cloud account (AWS, GCP or Azure) where the connector will run.</li>
+          <li>A way to see outcomes for the task you'll pick — ticket state, ledger entries, test results.</li>
+          <li>Someone who can approve redaction rules, usually your security or data owner.</li>
+        </ul>
+        <div class="callout"><b>Nothing leaves your cloud.</b> The connector, verifiers, golden sets and training jobs all run inside your account. katyar never receives raw traces.</div>
+
+        <h2 id="deploy"><span class="n">1</span>Deploy the connector in your cloud</h2>
+        <p>Sign in with the CLI, then deploy the connector next to your gateway. In <code>mirror</code> mode it reads a copy of traffic, so your agent's requests never wait on it.</p>
+<pre><code><span class="c"># sign in and choose the account the connector runs in</span>
+<span class="c">$</span> katyar login
+<span class="c">$</span> katyar connector deploy \
+    --cloud aws --region eu-west-1 \
+    --gateway <span class="s">https://llm-gateway.internal.example.com</span> \
+    --mode mirror
+
+<span class="g">✓</span> connector running in your account (aws · eu-west-1)
+<span class="g">✓</span> mirroring traffic from llm-gateway.internal.example.com</code></pre>
+        <h3>What the connector captures</h3>
+        <ul>
+          <li>Prompts and responses, including multi-turn conversations.</li>
+          <li>Tool calls, their arguments and their results.</li>
+          <li>The model and route that served each request.</li>
+          <li>Joins to the outcome events you connect in step 3.</li>
+        </ul>
+
+        <h2 id="redaction"><span class="n">2</span>Approve redaction rules</h2>
+        <p>Before anything is stored, the connector proposes redaction rules from a sample of live traffic. Nothing is written until someone with the <code>data-owner</code> role approves them.</p>
+<pre><code><span class="c"># katyar/redaction.yaml — proposed from 500 sampled traces</span>
+<span class="k">rules</span>:
+  - { <span class="k">field</span>: <span class="s">"*.email"</span>,          <span class="k">action</span>: mask }  <span class="c"># seen in 38% of samples</span>
+  - { <span class="k">field</span>: <span class="s">"*.phone"</span>,          <span class="k">action</span>: mask }
+  - { <span class="k">field</span>: <span class="s">"customer.address"</span>, <span class="k">action</span>: drop }
+  - { <span class="k">pattern</span>: card_number,      <span class="k">action</span>: drop }
+  - { <span class="k">field</span>: <span class="s">"order.id"</span>,         <span class="k">action</span>: keep }  <span class="c"># needed to join outcomes</span>
+
+<span class="c">$</span> katyar redaction review
+<span class="c">$</span> katyar redaction approve --by <span class="s">data-owner@yourco.com</span></code></pre>
+        <div class="callout"><b>Redaction runs before storage, not after.</b> Masked and dropped fields never reach disk, so they can't end up in a golden set or a training run.</div>
+
+        <h2 id="task"><span class="n">3</span>Choose a task</h2>
+        <p>Start with one task that repeats often and has an outcome you can check. katyar groups your traffic into candidate tasks and shows how much volume each has and how checkable it is.</p>
+<pre><code><span class="c">$</span> katyar tasks suggest --last 7d
+
+TASK              TRACES/WK   OUTCOME SOURCE          CHECKABLE
+refund-triage        28,140   ledger + ticket state   high
+order-lookup         41,002   orders API              high
+sql-reports           9,318   warehouse               high
+contract-review       3,044   human edits             medium
+escalations           6,210   —                       low
+
+<span class="c">$</span> katyar tasks create refund-triage --outcomes ledger,tickets</code></pre>
+        <p>Skip tasks marked <strong>low</strong>. If you can't say what a correct answer looks like, a verifier can't either — those tasks stay on your frontier model.</p>
+
+        <h2 id="verifiers"><span class="n">4</span>Add verifiers</h2>
+        <p>Verifiers decide which traces count as correct. A trace joins the golden set only if every verifier on its task passes. Most teams combine checks from the library with one written by the people who own the process.</p>
+        <h3>From the library</h3>
+<pre><code><span class="c">$</span> katyar verifiers add refund-triage \
+    tools.schema_valid \
+    support.ledger_agrees --policy <span class="s">refunds@v7</span> \
+    privacy.no_pii</code></pre>
+        <h3>Write your own</h3>
+<pre><code><span class="c"># verifiers/refund_window.py</span>
+<span class="k">from</span> katyar <span class="k">import</span> verifier, Reward
+
+<span class="k">@verifier</span>(<span class="s">"yourco.refund_window"</span>, version=<span class="s">"1.0"</span>)
+<span class="k">def</span> refund_window(trace) -&gt; Reward:
+    order = trace.outcome(<span class="s">"orders"</span>).get(trace.args[<span class="s">"order_id"</span>])
+    refund = trace.outcome(<span class="s">"ledger"</span>).refund_for(order.id)
+    <span class="k">return</span> Reward.all(
+        refund <span class="k">is not</span> None,                           <span class="c"># money actually moved</span>
+        order.age_days &lt;= policy.window(<span class="s">"refunds"</span>),  <span class="c"># inside the window</span>
+        abstain_if=order.disputed,                    <span class="c"># unsure → not golden</span>
+    )</code></pre>
+<pre><code><span class="c">$</span> katyar verifiers test verifiers/refund_window.py --sample 200
+<span class="g">✓</span> 200 traces · 171 pass · 22 fail · 7 abstain
+
+<span class="c">$</span> katyar verifiers publish verifiers/refund_window.py --task refund-triage</code></pre>
+        <div class="callout"><b>Abstaining is a feature.</b> When a verifier can't be sure, it abstains and the trace stays out of the golden set. Fewer, cleaner examples train a better model than more, noisier ones.</div>
+
+        <h2 id="parity"><span class="n">5</span>Watch parity and promote</h2>
+        <p>As verified examples build up, katyar trains your open model on them and scores it side by side with the frontier model on the same task. A task can only move once your model clears the threshold you set.</p>
+<pre><code><span class="c">$</span> katyar parity refund-triage
+
+MODEL                SUCCESS   PARITY   STATUS
+frontier (current)      0.92     100%   serving
+yours · v14             0.89      97%   ready to promote
+
+<span class="c">$</span> katyar promote refund-triage --threshold 95% --canary 10%
+<span class="g">✓</span> 10% of refund-triage traffic now served by yours · v14
+<span class="g">✓</span> rollback armed: parity below 95% for 30 min → back to frontier</code></pre>
+        <p>Raise the canary as confidence grows, or move the task back yourself at any time:</p>
+<pre><code><span class="c">$</span> katyar promote refund-triage --canary 100%
+<span class="c">$</span> katyar rollback refund-triage   <span class="c"># immediate; the frontier takes the task back</span></code></pre>
+        <div class="callout"><b>Rollback is automatic.</b> Promoted tasks keep being checked. If the score slips below your threshold, traffic moves back to the frontier model without anyone having to step in.</div>
+
+        <h2 id="next">What happens next</h2>
+        <p>The loop keeps running after the first promotion:</p>
+        <ul>
+          <li>New traffic keeps flowing through your verifiers, so the golden set grows every week.</li>
+          <li>Each training cycle produces a new model version, scored against the frontier before it can serve.</li>
+          <li>Add your next task with <code>katyar tasks create</code>, starting from the suggestions list.</li>
+          <li>Export the golden set whenever you like, in open formats. It's yours.</li>
+        </ul>
+      </div>
+
+      <div class="dfeedback">
+        <span>Was this page helpful?</span>
+        <button type="button" aria-pressed="false">Yes</button>
+        <button type="button" aria-pressed="false">No</button>
+        <span class="dthanks" hidden>Thanks — noted.</span>
+        <a class="dedit" href="#">Suggest an edit</a>
+      </div>
+
+      <nav class="dpager" aria-label="Previous and next">
+        <a href="#" class="prev"><span class="lab">← Previous</span><b>Overview</b></a>
+        <a href="#" class="next"><span class="lab">Next →</span><b>How katyar works</b></a>
+      </nav>
+    </article>
+
+    <aside class="dtoc" aria-label="On this page">
+      <span class="lab">On this page</span>
+      <ul>
+        <li><a href="#before">Before you start</a></li>
+        <li><a href="#deploy">1 · Deploy the connector</a></li>
+        <li><a href="#redaction">2 · Approve redaction</a></li>
+        <li><a href="#task">3 · Choose a task</a></li>
+        <li><a href="#verifiers">4 · Add verifiers</a></li>
+        <li><a href="#parity">5 · Watch parity</a></li>
+        <li><a href="#next">What happens next</a></li>
+      </ul>
+      <div class="dtoc-ft"><a href="#">Back to top ↑</a></div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- ============ NEED A HAND ============ -->
+<section class="sec night on-n dhelp">
+  <div class="w dhelp-in">
+    <div>
+      <span class="eb lab br">Need a hand?</span>
+      <h2 class="d3">We'll set up your first task <span class="it">with you.</span></h2>
+    </div>
+    <a class="pill inv lg" href="index.html#start">Book a setup call <span class="ar">→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="w">
+    <div class="fg">
+      <div>
+        <span class="lg2">katyar</span>
+        <p>Continuous collection and continuous training. Turn your agents' work into a golden dataset and a model you own.</p>
+      </div>
+      <div><h5>Platform</h5><ul><li><a href="index.html#pipeline">Pipeline</a></li><li><a href="index.html#verifiers">Verifiers</a></li><li><a href="index.html#l1">The L1 method</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+      <div><h5>Resources</h5><ul><li><a href="docs.html">Docs</a></li><li><a href="research.html">Research</a></li><li><a href="use-cases.html">Use cases</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="about.html">About us</a></li><li><a href="about.html#careers">Careers</a></li><li><a href="index.html#start">Request a pilot</a></li></ul></div>
+    </div>
+    <div class="fbar"><span>© 2026 katyar</span><span class="sp">Your data · your verifiers · your model</span></div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="docs.js"></script>
+</body>
+</html>

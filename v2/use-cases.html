@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use cases — katyar</title>
+<meta name="description" content="The tasks your agents repeat every day, and how an open model trained on your own verified data takes each one over from the frontier model.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="stylesheet" href="use-cases.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="index.html"><span class="sq"></span> katyar</a>
+    <nav>
+      <a href="index.html#pipeline">Platform</a>
+      <a href="research.html">Research</a>
+      <a href="use-cases.html" aria-current="page">Use cases</a>
+      <a href="docs.html">Docs</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="pill o" href="index.html#start">Sign in</a>
+    <a class="pill" href="index.html#start">Start with one agent <span class="ar">→</span></a>
+    <details class="mnav">
+      <summary aria-label="Menu"><span></span></summary>
+      <div class="mnav-panel">
+        <a href="index.html#pipeline">Platform</a>
+        <a href="research.html">Research</a>
+        <a href="use-cases.html" aria-current="page">Use cases</a>
+        <a href="docs.html">Docs</a>
+        <a href="about.html">About</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="sec band phero">
+  <div class="w">
+    <div>
+      <div class="crumbs"><a href="index.html">katyar</a><i>/</i><span>Use cases</span></div>
+      <span class="eb lab br rv">Use cases</span>
+      <h1 class="rv">The tasks your agents repeat every day. <span class="it">Own each one.</span></h1>
+    </div>
+    <div>
+      <p class="lead rv">Most agent work is the same few tasks, run thousands of times. Those are exactly the tasks an open model can learn from your own verified data — one at a time, with the frontier model as the safety net.</p>
+      <div class="meta rv">
+        <div><span>Industries</span><b>7</b></div>
+        <div><span>Example use cases</span><b>8</b></div>
+        <div><span>Best fit</span><b>high volume · checkable outcome</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ USE-CASE GRID ============ -->
+<section class="sec" id="grid">
+  <div class="w">
+    <div class="sec-head rv"><h2>Pick an industry. <span class="it">See what moves over.</span></h2><span class="lab">01 · by industry</span></div>
+
+    <div class="uc-filter rv">
+      <div class="pill-tabs" role="tablist" id="ucTabs" aria-label="Filter by industry">
+        <button role="tab" aria-selected="true" data-f="all">All</button>
+        <button role="tab" aria-selected="false" data-f="support">Support</button>
+        <button role="tab" aria-selected="false" data-f="engineering">Engineering</button>
+        <button role="tab" aria-selected="false" data-f="data">Data</button>
+        <button role="tab" aria-selected="false" data-f="finance">Finance</button>
+        <button role="tab" aria-selected="false" data-f="life">Life sciences</button>
+        <button role="tab" aria-selected="false" data-f="insurance">Insurance</button>
+        <button role="tab" aria-selected="false" data-f="legal">Legal</button>
+      </div>
+      <span class="uc-count" id="ucCount">8 use cases · parity illustrative</span>
+    </div>
+
+    <div class="cards two rv" id="ucGrid">
+
+      <article class="card uc" data-ind="support">
+        <div class="uc-top"><span class="lab">Support</span><span class="uc-s go"><i></i> owned</span></div>
+        <h3>Refund triage</h3>
+        <p>Decide whether a refund is due, issue it, and tell the customer.</p>
+        <div><span class="uc-k">What gets checked</span>
+          <ul class="uc-checks">
+            <li><span>Refund tool called with valid arguments</span><span class="src">library</span></li>
+            <li><span>Money actually moved in the ledger</span><span class="src">library</span></li>
+            <li><span>Inside your refund policy window</span><span class="src yours">yours</span></li>
+          </ul>
+        </div>
+        <div class="uc-two">
+          <div><span class="uc-k g">Your model takes over</span><p>Routine refunds inside policy.</p></div>
+          <div><span class="uc-k">Frontier keeps</span><p>Disputes, fraud flags, exceptions.</p></div>
+        </div>
+        <div class="uc-par"><div class="uc-bar"><i class="go" style="--w:97%"></i><b></b></div><div class="uc-sub"><span>97% of frontier</span><span>handoff at 95%</span></div></div>
+      </article>
+
+      <article class="card uc" data-ind="support">
+        <div class="uc-top"><span class="lab">Support</span><span class="uc-s sh"><i></i> shadow</span></div>
+        <h3>Ticket reply drafting</h3>
+        <p>Draft the first reply to a customer ticket from your help center and order data.</p>
+        <div><span class="uc-k">What gets checked</span>
+          <ul class="uc-checks">
+            <li><span>Answer matches a help-center source</span><span class="src">library</span></li>
+            <li><span>No personal data in the reply</span><span class="src">library</span></li>
+            <li><span>Customer didn't reopen within 7 days</span><span class="src yours">yours</span></li>
+          </ul>
+        </div>
+        <div class="uc-two">
+          <div><span class="uc-k g">Your model takes over</span><p>Order status, returns, account how-tos.</p></div>
+          <div><span class="uc-k">Frontier keeps</span><p>Escalations and multi-issue threads.</p></div>
+        </div>
+        <div class="uc-par"><div class="uc-bar"><i style="--w:91%"></i><b></b></div><div class="uc-sub"><span>91% of frontier</span><span>handoff at 95%</span></div></div>
+      </article>
+
+      <article class="card uc" data-ind="engineering">
+        <div class="uc-top"><span class="lab">Engineering</span><span class="uc-s sh"><i></i> shadow</span></div>
+        <h3>Code review &amp; test fixing</h3>
+        <p>Fix failing tests and apply review feedback on routine pull requests.</p>
+        <div><span class="uc-k">What gets checked</span>
+          <ul class="uc-checks">
+            <li><span>Test suite passes in a sandbox</span><span class="src">library</span></li>
+            <li><span>Diff builds and lints cleanly</span><span class="src">library</span></li>
+            <li><span>Follows your repo conventions</span><span class="src yours">yours</span></li>
+          </ul>
+        </div>
+        <div class="uc-two">
+          <div><span class="uc-k g">Your model takes over</span><p>Flaky tests, lint fixes, dependency bumps.</p></div>
+          <div><span class="uc-k">Frontier keeps</span><p>Architecture and cross-service changes.</p></div>
+        </div>
+        <div class="uc-par"><div class="uc-bar"><i style="--w:88%"></i><b></b></div><div class="uc-sub"><span>88% of frontier</span><span>handoff at 95%</span></div></div>
+      </article>
+
+      <article class="card uc" data-ind="data">
+        <div class="uc-top"><span class="lab">Data</span><span class="uc-s go"><i></i> owned</span></div>
+        <h3>SQL reporting</h3>
+        <p>Turn a plain-language question into a query and a number people can trust.</p>
+        <div><span class="uc-k">What gets checked</span>
+          <ul class="uc-checks">
+            <li><span>Query runs against the warehouse</span><span class="src">library</span></li>
+            <li><span>Result matches the reference</span><span class="src">library</span></li>
+            <li><span>Uses your approved metric definitions</span><span class="src yours">yours</span></li>
+          </ul>
+        </div>
+        <div class="uc-two">
+          <div><span class="uc-k g">Your model takes over</span><p>Weekly KPI pulls and standard breakdowns.</p></div>
+          <div><span class="uc-k">Frontier keeps</span><p>New analyses with no reference yet.</p></div>
+        </div>
+        <div class="uc-par"><div class="uc-bar"><i class="go" style="--w:96%"></i><b></b></div><div class="uc-sub"><span>96% of frontier</span><span>handoff at 95%</span></div></div>
+      </article>
+
+      <article class="card uc" data-ind="finance">
+        <div class="uc-top"><span class="lab">Finance</span><span class="uc-s"><i></i> training</span></div>
+        <h3>Invoice reconciliation</h3>
+        <p>Match invoices to purchase orders and payments, and flag what doesn't add up.</p>
+        <div><span class="uc-k">What gets checked</span>
+          <ul class="uc-checks">
+            <li><span>Totals reconcile to the ledger</span><span class="src">library</span></li>
+            <li><span>Vendor exists in your master data</span><span class="src yours">yours</span></li>
+            <li><span>Tax lines follow your rules</span><span class="src yours">yours</span></li>
+          </ul>
+        </div>
+        <div class="uc-two">
+          <div><span class="uc-k g">Your model takes over</span><p>Clean matches with standard vendors.</p></div>
+          <div><span class="uc-k">Frontier keeps</span><p>Partial payments and disputed invoices.</p></div>
+        </div>
+        <div class="uc-par"><div class="uc-bar"><i style="--w:79%"></i><b></b></div><div class="uc-sub"><span>79% of frontier</span><span>handoff at 95%</span></div></div>
+      </article>
+
+      <article class="card uc" data-ind="life">
+        <div class="uc-top"><span class="lab">Life sciences</span><span class="uc-s"><i></i> training</span></div>
+        <h3>Assay protocol planning</h3>
+        <p>Draft a lab protocol from an approved template, ready for a scientist to sign off.</p>
+        <div><span class="uc-k">What gets checked</span>
+          <ul class="uc-checks">
+            <li><span>Reagents are in stock in your LIMS</span><span class="src yours">yours</span></li>
+            <li><span>Temperatures stay within your SOP</span><span class="src yours">yours</span></li>
+            <li><span>Samples exist and are released</span><span class="src yours">yours</span></li>
+          </ul>
+        </div>
+        <div class="uc-two">
+          <div><span class="uc-k g">Your model takes over</span><p>Routine plans from approved templates.</p></div>
+          <div><span class="uc-k">Frontier keeps</span><p>Novel protocols — sent to a scientist.</p></div>
+        </div>
+        <div class="uc-par"><div class="uc-bar"><i style="--w:72%"></i><b></b></div><div class="uc-sub"><span>72% of frontier</span><span>handoff at 95%</span></div></div>
+      </article>
+
+      <article class="card uc" data-ind="insurance">
+        <div class="uc-top"><span class="lab">Insurance</span><span class="uc-s sh"><i></i> shadow</span></div>
+        <h3>Claims decisions</h3>
+        <p>Recommend a decision and payout on a claim, with the reasoning an adjuster would give.</p>
+        <div><span class="uc-k">What gets checked</span>
+          <ul class="uc-checks">
+            <li><span>Required documents are present</span><span class="src">library</span></li>
+            <li><span>Coverage applied the way your adjusters apply it</span><span class="src yours">yours</span></li>
+            <li><span>Payout within policy limits</span><span class="src yours">yours</span></li>
+          </ul>
+        </div>
+        <div class="uc-two">
+          <div><span class="uc-k g">Your model takes over</span><p>Straightforward auto and property claims.</p></div>
+          <div><span class="uc-k">Frontier keeps</span><p>Large losses and suspected fraud.</p></div>
+        </div>
+        <div class="uc-par"><div class="uc-bar"><i style="--w:90%"></i><b></b></div><div class="uc-sub"><span>90% of frontier</span><span>handoff at 95%</span></div></div>
+      </article>
+
+      <article class="card uc" data-ind="legal">
+        <div class="uc-top"><span class="lab">Legal</span><span class="uc-s"><i></i> training</span></div>
+        <h3>Contract clause review</h3>
+        <p>First-pass review of incoming contracts against your negotiation playbook.</p>
+        <div><span class="uc-k">What gets checked</span>
+          <ul class="uc-checks">
+            <li><span>Every cited clause exists in the document</span><span class="src">library</span></li>
+            <li><span>Flags match your playbook positions</span><span class="src yours">yours</span></li>
+            <li><span>No privileged data leaves the review</span><span class="src">library</span></li>
+          </ul>
+        </div>
+        <div class="uc-two">
+          <div><span class="uc-k g">Your model takes over</span><p>NDAs and standard MSA first passes.</p></div>
+          <div><span class="uc-k">Frontier keeps</span><p>Bespoke deals and sensitive language.</p></div>
+        </div>
+        <div class="uc-par"><div class="uc-bar"><i style="--w:76%"></i><b></b></div><div class="uc-sub"><span>76% of frontier</span><span>handoff at 95%</span></div></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PATH ============ -->
+<section class="sec band" id="path">
+  <div class="w">
+    <div class="sec-head rv"><h2>From frontier to owned, <span class="it">one task at a time.</span></h2><span class="lab">02 · the path</span></div>
+    <div class="path rv">
+      <div>
+        <div class="n">01</div>
+        <h3>Collect</h3>
+        <p>Your agents keep running on the frontier model. Every call, tool call and outcome is captured and redacted in your cloud.</p>
+        <span class="d">CC · gateway connector</span>
+      </div>
+      <div>
+        <div class="n">02</div>
+        <h3>Verify</h3>
+        <p>Library and custom checks decide which answers were actually right. Only those become golden examples.</p>
+        <span class="d">CT · verifiers</span>
+      </div>
+      <div>
+        <div class="n">03</div>
+        <h3>Train</h3>
+        <p>An open model learns the task from the golden set, rewarded by the same checks.</p>
+        <span class="d">CT · RL on your compute</span>
+      </div>
+      <div>
+        <div class="n">04</div>
+        <h3>Hand off</h3>
+        <p>Once it matches the frontier on that task, traffic moves over. If it slips, the task moves back.</p>
+        <span class="d">Parity gate · 95%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIT CHECK ============ -->
+<section class="sec" id="fit">
+  <div class="w">
+    <div class="sec-head rv"><h2>Is your task a good fit?</h2><span class="lab">03 · fit check</span></div>
+    <div class="fit rv">
+      <div class="fit-col yes">
+        <h3>A good fit</h3>
+        <ul>
+          <li><span class="m">✓</span><div><b>High volume</b><span class="t">Hundreds or thousands of runs a week, so there's plenty to learn from.</span></div></li>
+          <li><span class="m">✓</span><div><b>An outcome you can check</b><span class="t">A ledger entry, a passing test, a number that matches.</span></div></li>
+          <li><span class="m">✓</span><div><b>Stable rules</b><span class="t">Policies change, but not every day.</span></div></li>
+          <li><span class="m">✓</span><div><b>A safe fallback</b><span class="t">When the model isn't sure, the frontier or a person takes it.</span></div></li>
+        </ul>
+      </div>
+      <div class="fit-col no">
+        <h3>Not yet</h3>
+        <ul>
+          <li><span class="m">–</span><div><b>Open-ended creative work</b><span class="t">No single right answer to check against.</span></div></li>
+          <li><span class="m">–</span><div><b>No ground truth</b><span class="t">Nothing in your systems confirms the outcome.</span></div></li>
+          <li><span class="m">–</span><div><b>Rare, one-off tasks</b><span class="t">Too few examples to learn from, for now.</span></div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fit-note rv">
+      <p><b>Not sure where your task lands?</b> Send it to us and we'll tell you honestly.</p>
+      <a class="pill" href="#start">Check my task <span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="start">
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="w cta-in on-n">
+    <div class="head" style="align-items:end">
+      <div>
+        <span class="eb lab br">Start with one agent</span>
+        <h2 class="d2 rv">Point us at one agent. <span class="it">We'll show you its parity curve.</span></h2>
+        <p class="p lg rv" style="margin-top:18px">You get a first golden set, the verifiers that built it, and an honest read on which tasks your own model can take over.</p>
+        <form class="fld rv" id="f">
+          <label><span class="lab">Work email</span><input type="email" required placeholder="you@company.com"></label>
+          <button class="pill inv lg" type="submit">Request a pilot <span class="ar">→</span></button>
+        </form>
+        <p class="p" id="msg" style="margin-top:14px" hidden>Noted — we'll be in touch about scoping the pilot.</p>
+      </div>
+      <div class="fine rv">
+        <div><span class="mono">01</span><span>One agent, one task family, fixed length.</span></div>
+        <div><span class="mono">02</span><span>Connector in your VPC. Redaction before anything moves.</span></div>
+        <div><span class="mono">03</span><span>You keep the golden set, the verifiers and the weights.</span></div>
+        <div><span class="mono">04</span><span>Your frontier model stays in place until parity is proven.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="w">
+    <div class="fg">
+      <div>
+        <span class="lg2">katyar</span>
+        <p>Continuous collection and continuous training. Turn your agents' work into a golden dataset and a model you own.</p>
+      </div>
+      <div><h5>Platform</h5><ul><li><a href="index.html#pipeline">Pipeline</a></li><li><a href="index.html#verifiers">Verifiers</a></li><li><a href="index.html#l1">The L1 method</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+      <div><h5>Resources</h5><ul><li><a href="docs.html">Docs</a></li><li><a href="research.html">Research</a></li><li><a href="use-cases.html">Use cases</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="about.html">About us</a></li><li><a href="about.html#careers">Careers</a></li><li><a href="index.html#start">Request a pilot</a></li></ul></div>
+    </div>
+    <div class="fbar"><span>© 2026 katyar</span><span class="sp">Your data · your verifiers · your model</span></div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="use-cases.js"></script>
+</body>
+</html>

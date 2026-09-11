@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About us — katyar</title>
+<meta name="description" content="katyar helps companies turn the AI calls they already pay for into verified data and models they own, running in their own cloud.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="stylesheet" href="about.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="index.html"><span class="sq"></span> katyar</a>
+    <nav>
+      <a href="index.html#pipeline">Platform</a>
+      <a href="research.html">Research</a>
+      <a href="use-cases.html">Use cases</a>
+      <a href="docs.html">Docs</a>
+      <a href="about.html" aria-current="page">About</a>
+    </nav>
+    <a class="pill o" href="index.html#start">Sign in</a>
+    <a class="pill" href="index.html#start">Start with one agent <span class="ar">→</span></a>
+    <details class="mnav">
+      <summary aria-label="Menu"><span></span></summary>
+      <div class="mnav-panel">
+        <a href="index.html#pipeline">Platform</a>
+        <a href="research.html">Research</a>
+        <a href="use-cases.html">Use cases</a>
+        <a href="docs.html">Docs</a>
+        <a href="about.html" aria-current="page">About</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="sec band phero">
+  <div class="w">
+    <div>
+      <div class="crumbs"><a href="index.html">katyar</a><i>/</i><span>About us</span></div>
+      <span class="eb lab br rv">About us</span>
+      <h1 class="rv">Every company should own <span class="it">the intelligence it pays for.</span></h1>
+    </div>
+    <div>
+      <p class="lead rv">We build the pipeline that turns the AI calls you already make into verified data and models that belong to you — trained on your work, running in your cloud.</p>
+      <div class="meta rv">
+        <div><span>What we build</span><b>the CC / CT pipeline</b></div>
+        <div><span>What you keep</span><b>data · verifiers · weights</b></div>
+        <div><span>Where it runs</span><b>your cloud</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="sec" id="story">
+  <div class="w">
+    <div class="sec-head rv"><h2>Why we exist</h2><span class="lab">01 · the story</span></div>
+    <div class="story">
+      <div class="prose rv">
+        <p><strong>Most companies rent their intelligence.</strong> Every day their agents send thousands of calls to a frontier model. Each one gets an answer, and each one is paid for. Then the transcript, the tool calls and the human who fixed the answer all expire in a log bucket. Nothing is kept.</p>
+        <p>That is a strange way to treat the most valuable data a company produces. It is a record of real work, on real systems, with real outcomes attached — exactly what you would want to teach a model with.</p>
+        <h3>The L1 engineer idea</h3>
+        <p>Nobody hires an L1 engineer for what they know on day one. They get good at specific tasks by doing them next to someone better, with a lead checking the work. After enough reps, they own the queue.</p>
+        <p>We train open models the same way. The frontier model is the senior. Verifiers — checks written against your own systems — are the lead. A small model learns the twenty tasks your agents repeat every day until it matches the senior on those tasks, and the senior stays on call for everything else.</p>
+        <h3>Why the golden dataset matters</h3>
+        <p>The model is only half of what you end up with. The other half is the <strong>golden dataset</strong>: every example checked before it is admitted, versioned, and yours. Models will keep changing. A verified record of how your company does its work outlives all of them — when a better open model ships, you retrain instead of starting over.</p>
+      </div>
+      <figure class="pull rv">
+        <blockquote>Every AI call you pay for today <span class="it">becomes an asset you own tomorrow.</span></blockquote>
+        <figcaption>The idea behind katyar</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section class="sec band" id="principles">
+  <div class="w">
+    <div class="sec-head rv"><h2>What we believe</h2><span class="lab">02 · principles</span></div>
+    <div class="cards principles rv">
+      <div class="card gd"><span class="n">01</span><h3>Your data stays yours</h3><p>Collection, checking and training run inside your own cloud account. Nothing you send us trains anyone else's model.</p></div>
+      <div class="card"><span class="n">02</span><h3>Verified or it doesn't count</h3><p>An example enters the golden set only when every check passes. One failure and it is out, with the reason logged.</p></div>
+      <div class="card"><span class="n">03</span><h3>Specialists, not a replacement for everything</h3><p>Your model takes over the repeated, checkable work. The long tail stays with the frontier model, where it belongs.</p></div>
+      <div class="card"><span class="n">04</span><h3>State the limits honestly</h3><p>If a task can't be verified, we say so and leave it alone. We would rather tell you it isn't ready than train on a guess.</p></div>
+      <div class="card"><span class="n">05</span><h3>The frontier stays on call</h3><p>Tasks below the bar keep routing to the frontier model. No big-bang cutover, and every handoff can move back.</p></div>
+      <div class="card gd"><span class="n">06</span><h3>Leave any time with everything</h3><p>The model, the verified library and the checks live in your cloud, in open formats. If you stop working with us, you keep all of it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW WE WORK ============ -->
+<section class="sec" id="how">
+  <div class="w">
+    <div class="sec-head rv"><h2>How we work</h2><span class="lab">03 · practices</span></div>
+    <div class="practices rv">
+      <div><div class="n">01</div><h3>Pilot on one agent first</h3><p>One agent, one task family, a fixed length. You see a real parity curve before committing to anything bigger.</p></div>
+      <div><div class="n">02</div><h3>Measure every task separately</h3><p>No blended averages. Each task has its own score against the frontier and its own bar to clear.</p></div>
+      <div><div class="n">03</div><h3>Roll back automatically</h3><p>Handed-off tasks keep being checked. If quality slips, traffic moves back to the frontier model without anyone paging us.</p></div>
+      <div><div class="n">04</div><h3>Open formats you keep</h3><p>Weights, datasets and verifiers are stored in standard formats in your account — readable without katyar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="sec band" id="team">
+  <div class="w">
+    <div class="sec-head rv"><h2>The team</h2><span class="lab">04 · people</span></div>
+    <div class="cards team rv">
+      <div class="card"><span class="mono-av">—</span><div><h3>[Founder name]</h3><div class="role">Co-founder · CEO</div></div></div>
+      <div class="card"><span class="mono-av">—</span><div><h3>[Founder name]</h3><div class="role">Co-founder · CTO</div></div></div>
+      <div class="card"><span class="mono-av">—</span><div><h3>[Name]</h3><div class="role">Research · verifiers &amp; RL</div></div></div>
+      <div class="card"><span class="mono-av">—</span><div><h3>[Name]</h3><div class="role">Engineering · data pipeline</div></div></div>
+      <div class="card"><span class="mono-av">—</span><div><h3>[Name]</h3><div class="role">Engineering · training &amp; serving</div></div></div>
+      <div class="card"><span class="mono-av">—</span><div><h3>[Name]</h3><div class="role">Customer engineering</div></div></div>
+    </div>
+    <p class="team-note rv">Placeholder — names, photos and short bios to be added.</p>
+  </div>
+</section>
+
+<!-- ============ CAREERS ============ -->
+<section class="sec" id="careers">
+  <div class="w">
+    <div class="sec-head rv"><h2>Open roles</h2><span class="lab">05 · careers</span></div>
+    <div class="roles rv">
+      <a class="role-row" href="index.html#start"><h3>Research engineer, verifiers</h3><span class="m">Research</span><span class="m loc">Remote-friendly</span><span class="go">Apply <span class="ar">→</span></span></a>
+      <a class="role-row" href="index.html#start"><h3>ML engineer, RL training</h3><span class="m">Training</span><span class="m loc">Remote-friendly</span><span class="go">Apply <span class="ar">→</span></span></a>
+      <a class="role-row" href="index.html#start"><h3>Software engineer, data pipeline</h3><span class="m">Platform</span><span class="m loc">Remote-friendly</span><span class="go">Apply <span class="ar">→</span></span></a>
+      <a class="role-row" href="index.html#start"><h3>Forward-deployed engineer</h3><span class="m">Customer engineering</span><span class="m loc">Remote-friendly</span><span class="go">Apply <span class="ar">→</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="start">
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="w cta-in on-n">
+    <div class="head" style="align-items:end">
+      <div>
+        <span class="eb lab br">Start with one agent</span>
+        <h2 class="d2 rv">Point us at one agent. <span class="it">We'll show you its parity curve.</span></h2>
+        <p class="p lg rv" style="margin-top:18px">You get a first golden set, the verifiers that built it, and an honest read on which tasks your own model can take over.</p>
+        <form class="fld rv" id="f">
+          <label><span class="lab">Work email</span><input type="email" required placeholder="you@company.com"></label>
+          <button class="pill inv lg" type="submit">Request a pilot <span class="ar">→</span></button>
+        </form>
+        <p class="p" id="msg" style="margin-top:14px" hidden>Noted — we'll be in touch about scoping the pilot.</p>
+      </div>
+      <div class="fine rv">
+        <div><span class="mono">01</span><span>One agent, one task family, fixed length.</span></div>
+        <div><span class="mono">02</span><span>Connector in your VPC. Redaction before anything moves.</span></div>
+        <div><span class="mono">03</span><span>You keep the golden set, the verifiers and the weights.</span></div>
+        <div><span class="mono">04</span><span>Your frontier model stays in place until parity is proven.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="w">
+    <div class="fg">
+      <div>
+        <span class="lg2">katyar</span>
+        <p>Continuous collection and continuous training. Turn your agents' work into a golden dataset and a model you own.</p>
+      </div>
+      <div><h5>Platform</h5><ul><li><a href="index.html#pipeline">Pipeline</a></li><li><a href="index.html#verifiers">Verifiers</a></li><li><a href="index.html#l1">The L1 method</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+      <div><h5>Resources</h5><ul><li><a href="docs.html">Docs</a></li><li><a href="research.html">Research</a></li><li><a href="use-cases.html">Use cases</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="about.html">About us</a></li><li><a href="about.html#careers">Careers</a></li><li><a href="index.html#start">Request a pilot</a></li></ul></div>
+    </div>
+    <div class="fbar"><span>© 2026 katyar</span><span class="sp">Your data · your verifiers · your model</span></div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

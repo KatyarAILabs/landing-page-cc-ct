@@ -1,0 +1,53 @@
+/* ---- about page only ---- */
+
+/* story: prose left, pull quote right */
+.story{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,80px);align-items:start}
+.pull{position:sticky;top:96px;margin:0;padding:clamp(22px,2.6vw,34px);background:var(--card);border:1px solid var(--gold-2);border-radius:3px}
+.pull blockquote{margin:0;font-weight:500;letter-spacing:-.03em;line-height:1.08;font-size:clamp(26px,3vw,40px);color:var(--ink)}
+.pull blockquote .it{color:var(--gold)}
+.pull figcaption{margin-top:20px;padding-top:14px;border-top:1px solid var(--rule-2);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+
+/* principles: numbered cards */
+.principles .card .n{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint)}
+.principles .card.gd .n{color:var(--gold)}
+
+/* how we work: four numbered practices under the section head's ink rule */
+.practices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.practices>div{padding:22px 24px 4px 0}
+.practices>div:not(:first-child){padding-left:24px;border-left:1px solid var(--rule)}
+.practices .n{font-family:var(--mono);font-size:30px;letter-spacing:-.02em;line-height:1;color:var(--gold)}
+.practices h3{margin:16px 0 8px;font-size:17px;font-weight:500;letter-spacing:-.018em;line-height:1.25}
+.practices p{font-size:14px;line-height:1.55;color:var(--soft)}
+
+/* team: placeholder role cards with a neutral monogram */
+.team .card{flex-direction:row;align-items:center;gap:16px}
+.mono-av{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--paper-2);border:1px dashed var(--rule);font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--faint)}
+.team .card h3{font-size:16px}
+.team .card .role{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-top:4px}
+.team-note{margin-top:18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--faint)}
+
+/* careers: role rows */
+.roles{margin-top:-8px}
+.role-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) auto;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--rule);transition:background .3s}
+.role-row:hover{background:var(--paper-2)}
+.role-row h3{font-size:17px;font-weight:500;letter-spacing:-.018em}
+.role-row .m{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--soft)}
+.role-row .go{font-size:14px;color:var(--ink);white-space:nowrap}
+.role-row .go .ar{display:inline-block;transition:transform .25s var(--ease)}
+.role-row:hover .go .ar{transform:translateX(3px)}
+
+@media (max-width:1040px){
+  .story{grid-template-columns:1fr}
+  .pull{position:static}
+  .practices{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .practices>div:nth-child(3){padding-left:0;border-left:0}
+  .practices>div:nth-child(n+3){border-top:1px solid var(--rule);margin-top:18px}
+}
+@media (max-width:680px){
+  .practices{grid-template-columns:1fr}
+  .practices>div,.practices>div:not(:first-child){padding:20px 0 4px;border-left:0}
+  .practices>div:not(:first-child){border-top:1px solid var(--rule);margin-top:0}
+  .role-row{grid-template-columns:1fr auto;gap:6px 12px}
+  .role-row h3{grid-column:1/-1}
+  .role-row .m.loc{display:none}
+}

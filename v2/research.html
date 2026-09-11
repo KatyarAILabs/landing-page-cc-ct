@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research — katyar</title>
+<meta name="description" content="katyar's research agenda: specialist open models that match frontier models on a company's repeated tasks, trained on verified outcomes instead of preferences.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="stylesheet" href="research.css">
+</head>
+<body>
+<div id="prog"></div>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="index.html"><span class="sq"></span> katyar</a>
+    <nav>
+      <a href="index.html#pipeline">Platform</a>
+      <a href="research.html" aria-current="page">Research</a>
+      <a href="use-cases.html">Use cases</a>
+      <a href="docs.html">Docs</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="pill o" href="index.html#start">Sign in</a>
+    <a class="pill" href="index.html#start">Start with one agent <span class="ar">→</span></a>
+    <details class="mnav">
+      <summary aria-label="Menu"><span></span></summary>
+      <div class="mnav-panel">
+        <a href="index.html#pipeline">Platform</a>
+        <a href="research.html" aria-current="page">Research</a>
+        <a href="use-cases.html">Use cases</a>
+        <a href="docs.html">Docs</a>
+        <a href="about.html">About</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="sec band phero">
+  <div class="w">
+    <div>
+      <div class="crumbs"><a href="index.html">katyar</a><i>/</i><span>Research</span></div>
+      <span class="eb lab br rv">Research</span>
+      <h1 class="rv">Teaching small models <span class="it">to do real work.</span></h1>
+    </div>
+    <div>
+      <p class="lead rv">Our goal is narrow on purpose: specialist open models that match a frontier model on the tasks a company repeats every day — trained on outcomes that were checked, not on answers that merely sounded right.</p>
+      <div class="meta rv">
+        <div><span>Focus areas</span><b>5</b></div>
+        <div><span>Write-ups</span><b>6 in progress</b></div>
+        <div><span>Data</span><b>open benchmarks, or yours in your cloud</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AGENDA ============ -->
+<section class="sec" id="agenda">
+  <div class="w">
+    <div class="sec-head rv"><h2>The research agenda</h2><span class="lab">01 · five open questions</span></div>
+
+    <div class="agenda rv">
+      <div class="ag">
+        <span class="n">01</span>
+        <div><h3>Verifier robustness &amp; reward hacking</h3><p class="q">How do you know a verifier can't be gamed before you train on it?</p></div>
+        <div><span class="k">Our approach</span><p>A separate attacker searches for answers that score high while failing the task. Every shortcut it finds becomes a permanent test the verifier must pass.</p></div>
+        <span class="status live st"><i></i> active</span>
+      </div>
+      <div class="ag">
+        <span class="n">02</span>
+        <div><h3>Specialists under verifiable reward</h3><p class="q">Can a small model match a frontier model on one task family without copying the whole model?</p></div>
+        <div><span class="k">Our approach</span><p>Distill the task, not the model: a warm start on verified examples, then reinforcement learning where the same verifiers are the reward.</p></div>
+        <span class="status live st"><i></i> active</span>
+      </div>
+      <div class="ag">
+        <span class="n">03</span>
+        <div><h3>Continuous training without drift</h3><p class="q">How do you keep training every week without the model forgetting what it already does well?</p></div>
+        <div><span class="k">Our approach</span><p>Replay from the golden set, per-task regression gates, and automatic rollback when a task's score slips below its bar.</p></div>
+        <span class="status wip st"><i></i> in progress</span>
+      </div>
+      <div class="ag">
+        <span class="n">04</span>
+        <div><h3>Golden-data curation</h3><p class="q">What should happen to old examples when a verifier gets better?</p></div>
+        <div><span class="k">Our approach</span><p>Deduplicate, resolve contradictions, re-grade the whole set against each new verifier version, and keep provenance for every example.</p></div>
+        <span class="status wip st"><i></i> in progress</span>
+      </div>
+      <div class="ag">
+        <span class="n">05</span>
+        <div><h3>Measuring parity</h3><p class="q">When is a model good enough to take real traffic — and when should it hand the work back?</p></div>
+        <div><span class="k">Our approach</span><p>Side-by-side scoring against the frontier model on live tasks, shadow mode before routing, and thresholds the customer sets.</p></div>
+        <span class="status open st"><i></i> open question</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED NOTE ============ -->
+<section class="sec band" id="featured">
+  <div class="w feat">
+    <div>
+      <span class="eb lab br rv">Featured note</span>
+      <div class="prose rv">
+        <h2>Why checked outcomes beat preferences for agent training</h2>
+        <p>A preference score says an answer <em>looks</em> better. For an agent that moves money, edits code or books a shipment, that isn't the same as the work being done.</p>
+        <p>When a model is rewarded for what a grader likes, it gets very good at pleasing the grader. The score keeps climbing while real task success flattens — the gap in the figure.</p>
+        <p>When the reward comes from checking the outcome in your own systems — did the refund post, did the tests pass — there is much less room to look right without being right.</p>
+        <div class="callout"><b>Status:</b> draft. The full write-up, with methods and limits, is in progress.</div>
+      </div>
+    </div>
+
+    <figure class="fig rv" style="margin:0">
+      <div class="fig-hd">Figure 1 · task success during training <span class="sp">illustrative</span></div>
+      <div class="rfig">
+        <svg viewBox="0 0 560 270" role="img" aria-label="Illustrative chart. A model rewarded on checked outcomes climbs steadily in real task success. A model rewarded on preferences sees its grader score keep rising while its real task success levels off, leaving a gap.">
+          <defs>
+            <pattern id="rh" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="6" stroke="#d33a26" stroke-width="1" stroke-opacity=".28"/>
+            </pattern>
+          </defs>
+          <g stroke="#e8e6e1"><path d="M44 30h500M44 80h500M44 130h500M44 180h500M44 230h500"/></g>
+          <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#8e9198">
+            <text x="8" y="33">1.0</text><text x="8" y="83">0.8</text><text x="8" y="133">0.6</text><text x="8" y="183">0.4</text><text x="8" y="233">0.2</text>
+          </g>
+          <!-- gap between what the grader believes and what actually got done -->
+          <path d="M250 96C330 82 430 56 540 44L540 118C430 114 330 106 250 104Z" fill="url(#rh)"/>
+          <path d="M44 180C120 150 180 116 250 96S430 56 540 44" fill="none" stroke="#0c0c0d" stroke-width="1.4" stroke-dasharray="4 4" opacity=".55"/>
+          <path d="M44 180C120 146 180 112 250 104S430 112 540 118" fill="none" stroke="#0c0c0d" stroke-width="1.8"/>
+          <path d="M44 180C140 168 200 128 290 100S460 62 540 56" fill="none" stroke="#d5a24f" stroke-width="2.4"/>
+          <circle cx="540" cy="56" r="3.5" fill="#d5a24f"/>
+          <circle cx="540" cy="118" r="3.5" fill="#0c0c0d"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8">
+            <text x="290" y="140" fill="#d33a26">↑ GAP · SCORED WELL, DIDN'T DO THE WORK</text>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8" fill="#8e9198">
+            <text x="44" y="258">START OF TRAINING</text><text x="540" y="258" text-anchor="end">LATER</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption class="fig-ft rleg">
+        <span><i style="background:#d5a24f"></i>Checked outcomes · real success</span>
+        <span><i style="background:#0c0c0d"></i>Preferences · real success</span>
+        <span><i class="dash"></i>Preferences · grader's score</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ WRITE-UPS ============ -->
+<section class="sec" id="writeups">
+  <div class="w">
+    <div class="sec-head rv"><h2>Write-ups</h2><span class="lab">02 · drafts and upcoming</span></div>
+
+    <div class="wu-bar rv">
+      <div class="pill-tabs" id="wuTabs" role="tablist" aria-label="Filter write-ups by topic">
+        <button role="tab" aria-selected="true" data-topic="all">All</button>
+        <button role="tab" aria-selected="false" data-topic="verifiers">Verifiers</button>
+        <button role="tab" aria-selected="false" data-topic="training">Training</button>
+        <button role="tab" aria-selected="false" data-topic="data">Data</button>
+        <button role="tab" aria-selected="false" data-topic="evaluation">Evaluation</button>
+      </div>
+      <span class="lab" id="wuCount" aria-live="polite">6 write-ups</span>
+    </div>
+
+    <div class="wu-list rv" id="wuList">
+      <article class="wu" data-topic="verifiers">
+        <span class="tag">Verifiers</span>
+        <div><h3>A field guide to reward hacking in tool-using agents</h3><p>The shortcuts agents find when a check only looks at the surface — and the tests that close each one.</p></div>
+        <span class="status wip st"><i></i> draft</span>
+      </article>
+      <article class="wu" data-topic="training">
+        <span class="tag">Training</span>
+        <div><h3>Distill the task, not the model</h3><p>Why a narrow specialist trained on verified examples can match a generalist on the work it repeats.</p></div>
+        <span class="status wip st"><i></i> draft</span>
+      </article>
+      <article class="wu" data-topic="training">
+        <span class="tag">Training</span>
+        <div><h3>Training every week without forgetting</h3><p>Replay, regression gates and rollback for models that never stop learning.</p></div>
+        <span class="status open st"><i></i> coming soon</span>
+      </article>
+      <article class="wu" data-topic="data">
+        <span class="tag">Data</span>
+        <div><h3>Provenance for golden data</h3><p>Tracking where every example came from, so a set can be filtered, audited or rebuilt at any time.</p></div>
+        <span class="status wip st"><i></i> draft</span>
+      </article>
+      <article class="wu" data-topic="evaluation">
+        <span class="tag">Evaluation</span>
+        <div><h3>What parity should mean before a model takes traffic</h3><p>Side-by-side scoring, shadow mode, and the thresholds that decide a hand-off — or a hand-back.</p></div>
+        <span class="status wip st"><i></i> draft</span>
+      </article>
+      <article class="wu" data-topic="data">
+        <span class="tag">Data</span>
+        <div><h3>Re-grading: what happens to old data when a verifier improves</h3><p>Keeping a golden set honest as the checks that built it get stricter.</p></div>
+        <span class="status open st"><i></i> coming soon</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section class="sec band" id="principles">
+  <div class="w">
+    <div class="sec-head rv"><h2>How we do research</h2><span class="lab">03 · four commitments</span></div>
+    <div class="cards four rv">
+      <div class="card"><span class="pn">01</span><h3>Publish methods, not just results</h3><p>How a number was produced matters as much as the number. Write-ups include setup, verifiers and failure cases.</p></div>
+      <div class="card"><span class="pn">02</span><h3>Reproducible by default</h3><p>Fixed seeds, versioned configs and the exact verifier revision behind every run.</p></div>
+      <div class="card"><span class="pn">03</span><h3>Limits stated up front</h3><p>What a method can't do goes on the first page, not in a footnote.</p></div>
+      <div class="card gd"><span class="pn g">04</span><h3>Your data stays in your cloud</h3><p>Research on customer tasks runs only with permission, inside the customer's own account.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="start">
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="w cta-in on-n">
+    <div class="head" style="align-items:end">
+      <div>
+        <span class="eb lab br">Start with one agent</span>
+        <h2 class="d2 rv">Point us at one agent. <span class="it">We'll show you its parity curve.</span></h2>
+        <p class="p lg rv" style="margin-top:18px">You get a first golden set, the verifiers that built it, and an honest read on which tasks your own model can take over.</p>
+        <form class="fld rv" id="f">
+          <label><span class="lab">Work email</span><input type="email" required placeholder="you@company.com"></label>
+          <button class="pill inv lg" type="submit">Request a pilot <span class="ar">→</span></button>
+        </form>
+        <p class="p" id="msg" style="margin-top:14px" hidden>Noted — we'll be in touch about scoping the pilot.</p>
+      </div>
+      <div class="fine rv">
+        <div><span class="mono">01</span><span>One agent, one task family, fixed length.</span></div>
+        <div><span class="mono">02</span><span>Connector in your VPC. Redaction before anything moves.</span></div>
+        <div><span class="mono">03</span><span>You keep the golden set, the verifiers and the weights.</span></div>
+        <div><span class="mono">04</span><span>Your frontier model stays in place until parity is proven.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="w">
+    <div class="fg">
+      <div>
+        <span class="lg2">katyar</span>
+        <p>Continuous collection and continuous training. Turn your agents' work into a golden dataset and a model you own.</p>
+      </div>
+      <div><h5>Platform</h5><ul><li><a href="index.html#pipeline">Pipeline</a></li><li><a href="index.html#verifiers">Verifiers</a></li><li><a href="index.html#l1">The L1 method</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+      <div><h5>Resources</h5><ul><li><a href="docs.html">Docs</a></li><li><a href="research.html">Research</a></li><li><a href="use-cases.html">Use cases</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="about.html">About us</a></li><li><a href="about.html#careers">Careers</a></li><li><a href="index.html#start">Request a pilot</a></li></ul></div>
+    </div>
+    <div class="fbar"><span>© 2026 katyar</span><span class="sp">Your data · your verifiers · your model</span></div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="research.js"></script>
+</body>
+</html>
