@@ -12,7 +12,6 @@ function io(sel, cb, opts){
   }, opts || {rootMargin:'-5% 0px -8% 0px'});
   Array.prototype.forEach.call(els, function(e){ o.observe(e); });
 }
-function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
 
 /* ---------- reveals ---------- */
 io('.rv, .mask', function(el, vis){ if(vis) el.classList.add('in'); });
@@ -34,9 +33,6 @@ addEventListener('scroll', function(){
   var aside = document.querySelector('.hero .pt');
   var W=0, H=0, dpr=1, x0=0, x1=0, gates=[], stack={}, pulses=[], flashes=[];
   var mouse={x:-9999,y:-9999}, live=true, t=0;
-  var nIn=0, nGold=0, nRej=0, setV=14;
-  var elIn=document.getElementById('hIn'), elGold=document.getElementById('hGold'),
-      elRej=document.getElementById('hRej'), elSet=document.getElementById('hSet');
   var GATE_NAMES = ['V1 · SCHEMA','V2 · OUTCOME','V3 · DOMAIN'];
 
   function build(){
@@ -74,12 +70,6 @@ addEventListener('scroll', function(){
       st: 'run', vy: 0, a: 1, gate: gate, trail: [], tx:0, ty:0
     };
   }
-  function hud(){
-    if(elIn) elIn.textContent = fmt(1284000 + nIn);
-    if(elGold) elGold.textContent = fmt(212480 + nGold);
-    if(elRej) elRej.textContent = fmt(18204 + nRej);
-    if(elSet) elSet.textContent = 'v' + setV;
-  }
   function slot(k){
     var c = k % stack.cols, r = Math.floor(k / stack.cols);
     return {x: stack.x + c*stack.cell + stack.cell/2, y: stack.y - r*stack.cell - stack.cell/2};
@@ -90,7 +80,7 @@ addEventListener('scroll', function(){
       var y = p.y0 + Math.sin(p.ph + p.x*0.012)*10;
       while(p.gate < 3 && p.x >= gates[p.gate]){
         if(p.failAt === p.gate){
-          p.st = 'fail'; nRej++; nIn++;
+          p.st = 'fail';
           flashes.push({x:gates[p.gate], y:y, r:0, c:'211,58,38'});
           break;
         }
@@ -108,14 +98,13 @@ addEventListener('scroll', function(){
     } else if(p.st === 'dock'){
       p.x += (p.tx - p.x)*0.14; p.y += (p.ty - p.y)*0.14;
       if(Math.abs(p.tx-p.x) < 0.8 && Math.abs(p.ty-p.y) < 0.8){
-        nGold++; nIn++;
         reset(p);
-        if(stack.filled >= stack.cols*stack.rows){ stack.filled = 0; stack.flash = 1; setV++; }
+        if(stack.filled >= stack.cols*stack.rows){ stack.filled = 0; stack.flash = 1; }
       }
     }
     p.trail.push([p.x, p.y]); if(p.trail.length > 14) p.trail.shift();
   }
-  function reset(p){ var n = mk(false); for(var k in n) p[k] = n[k]; hud(); }
+  function reset(p){ var n = mk(false); for(var k in n) p[k] = n[k]; }
 
   function draw(){
     ctx.clearRect(0,0,W,H);
@@ -153,7 +142,7 @@ addEventListener('scroll', function(){
       stack.flash = Math.max(0, stack.flash - 0.02);
     }
     ctx.fillStyle = 'rgba(168,116,28,.8)';
-    ctx.fillText('GOLDEN SET V' + setV, stack.x - 3, stack.y + 16);
+    ctx.fillText('GOLDEN SET', stack.x - 3, stack.y + 16);
     // pulses
     for(var i=0;i<pulses.length;i++){
       var p = pulses[i];
@@ -183,7 +172,7 @@ addEventListener('scroll', function(){
   }
   function loop(){ if(!live) return; t++; draw(); raf(loop); }
 
-  build(); hud();
+  build();
   addEventListener('resize', function(){ build(); if(RM) draw(); });
   cv.parentElement.addEventListener('pointermove', function(e){
     var r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
@@ -200,96 +189,60 @@ addEventListener('scroll', function(){
 })();
 
 /* =========================================================
-   2. HERO — parity tracker
+   2. HERO — parity tracker (status only, no scores)
    ========================================================= */
 (function(){
   var box = document.getElementById('ptRows'); if(!box) return;
-  var owned = document.getElementById('ptOwned');
-  var START = [
-    {n:'order-lookup', tr:'41k', v:96.2},
-    {n:'refund-triage', tr:'28k', v:95.4},
-    {n:'sql-reports', tr:'9k', v:88.1},
-    {n:'contract-review', tr:'3k', v:71.6},
-    {n:'escalations', tr:'6k', v:null}
+  // how far along each task is, as a state — the bar is a picture of that, not a measurement
+  var TASKS = [
+    {n:'order-lookup', s:'owned'},
+    {n:'refund-triage', s:'owned'},
+    {n:'sql-reports', s:'shadow'},
+    {n:'contract-review', s:'training'},
+    {n:'escalations', s:'frontier'}
   ];
-  var tasks;
-  function reset(){ tasks = START.map(function(o){ return {n:o.n, tr:o.tr, v:o.v}; }); }
-  function state(v){ return v === null ? ['frontier',''] : v >= 95 ? ['owned','go'] : v >= 85 ? ['shadow','sh'] : ['training','']; }
-  function render(){
-    box.innerHTML = tasks.map(function(k){
-      var s = state(k.v);
-      return '<div class="pt-row"><div class="pt-top"><span class="n">'+k.n+'</span><span class="s '+s[1]+'">'+s[0]+'</span></div>'
-        + '<div class="pt-bar"><i class="'+(s[1]==='go'?'go':'')+'" style="width:'+(k.v===null?0:k.v)+'%"></i><b style="left:95%"></b></div>'
-        + '<div class="pt-sub"><span>'+k.tr+' traces / wk</span><span>'+(k.v===null?'not verifiable':k.v.toFixed(1)+'% of frontier')+'</span></div></div>';
-    }).join('');
-    if(owned) owned.textContent = tasks.filter(function(k){ return k.v !== null && k.v >= 95; }).length;
-  }
-  reset(); render();
-  if(RM) return;
-  var hold = 0;
-  setInterval(function(){
-    if(document.hidden) return;
-    var climbing = tasks.filter(function(k){ return k.v !== null && k.v < 95; });
-    if(!climbing.length){ if(++hold > 3){ hold = 0; reset(); } render(); return; }
-    climbing.forEach(function(k){ k.v = Math.min(99, k.v + 0.3 + Math.random()*0.9); });
-    tasks.forEach(function(k){ if(k.v !== null && k.v >= 95 && k.v < 99.4) k.v = Math.min(99.4, k.v + Math.random()*0.15); });
-    render();
-  }, 1400);
+  var W = {owned:96, shadow:72, training:44, frontier:0};
+  var NOTE = {owned:'runs on your model', shadow:'answering in shadow', training:'still training', frontier:'stays on the frontier'};
+  box.innerHTML = TASKS.map(function(k){
+    return '<div class="pt-row"><div class="pt-top"><span class="n">'+k.n+'</span><span class="s '+(k.s==='owned'?'go':k.s==='shadow'?'sh':'')+'">'+k.s+'</span></div>'
+      + '<div class="pt-bar"><i class="'+(k.s==='owned'?'go':'')+'" style="width:'+W[k.s]+'%"></i><b style="left:95%"></b></div>'
+      + '<div class="pt-sub"><span>'+NOTE[k.s]+'</span></div></div>';
+  }).join('');
 })();
 
 /* =========================================================
-   2b. THESIS — what you pay for vs what you keep, fed by a live call stream
+   2b. THESIS — a live call stream: each call is either kept or it isn't
    ========================================================= */
 (function(){
   var books = document.getElementById('books'); if(!books) return;
   var feed = document.getElementById('cvFeed');
-  var calls = document.getElementById('bkCalls'), spend = document.getElementById('bkSpend'), ex = document.getElementById('bkEx');
-  var BASE = {calls: 1284000, spend: 154080, ex: 212480};
-  var k = 0, add = {calls: 0, spend: 0, ex: 0}, id = 88214;
   // fixed rhythm instead of a coin flip, so the feed never shows a long run with nothing kept
   var KEPT = [0, 1, 0, 0, 1, 0, 1, 0, 0, 1], turn = 0;
   var TASKS = ['refund-triage', 'order-lookup', 'sql-report', 'ticket-reply', 'contract-review'];
   var WHY = ['failed a check', 'duplicate', 'no outcome yet', 'number didn’t match'];
   function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
-  function paint(){
-    calls.textContent = fmt(BASE.calls*k + add.calls);
-    spend.textContent = '$' + fmt(BASE.spend*k + add.spend);
-    ex.textContent = fmt(BASE.ex*k + add.ex);
-  }
-  // one call enters the feed; after a beat it's kept (+1 verified example) or not kept, with the reason.
-  // count=false seeds already-resolved rows without touching the totals.
-  function call(count){
-    var cost = 0.04 + Math.random()*0.27, kept = KEPT[turn++ % KEPT.length] === 1;
+  // one call enters the feed; after a beat it's kept or not kept, with the reason.
+  // resolved=true seeds already-settled rows on first paint.
+  function call(resolved){
+    var kept = KEPT[turn++ % KEPT.length] === 1;
     var r = document.createElement('div');
     r.className = 'cv-row';
-    r.innerHTML = '<span class="m">#' + fmt(id++) + ' · ' + pick(TASKS) + '<em>$' + cost.toFixed(2) + ' paid</em></span><span class="f">checking</span>';
+    r.innerHTML = '<span class="m">' + pick(TASKS) + '<em>paid for</em></span><span class="f">checking</span>';
     feed.appendChild(r);
     while(feed.children.length > 5) feed.removeChild(feed.firstChild);
-    if(count){ add.calls++; add.spend += cost; paint(); }
     function resolve(){
       r.classList.add(kept ? 'kept' : 'gone');
       r.querySelector('.f').textContent = kept ? 'kept' : 'not kept';
-      r.querySelector('em').textContent = '$' + cost.toFixed(2) + ' paid · ' + (kept ? '+1 verified example' : pick(WHY));
-      if(kept && count){ add.ex++; paint(); }
+      r.querySelector('em').textContent = kept ? 'verified — kept as an example' : pick(WHY);
     }
-    if(count) setTimeout(resolve, 700); else resolve();
+    if(resolved) resolve(); else setTimeout(resolve, 700);
   }
-  for(var i = 0; i < 5; i++) call(false);
-  if(RM){ k = 1; paint(); return; }
-  paint();
-  var timer = null, started = false;
+  for(var i = 0; i < 5; i++) call(true);
+  if(RM) return;
+  var timer = null;
   io([books], function(el, vis){
-    if(vis && !started){
-      started = true;
-      var t0 = performance.now();
-      (function step(now){
-        k = 1 - Math.pow(1 - Math.min(1, (now - t0)/1600), 3);
-        paint();
-        if(k < 1) raf(step);
-      })(t0);
-    }
     clearInterval(timer);
-    timer = vis ? setInterval(function(){ if(!document.hidden) call(true); }, 1100) : null;
+    timer = vis ? setInterval(function(){ if(!document.hidden) call(false); }, 1100) : null;
   });
 })();
 
@@ -300,8 +253,7 @@ addEventListener('scroll', function(){
   var svg = document.getElementById('dvsvg'); if(!svg) return;
   var lA = document.getElementById('lA'), lB = document.getElementById('lB'),
       dA = document.getElementById('dA'), dB = document.getElementById('dB'),
-      cwr = document.getElementById('cwr'), gapLab = document.getElementById('gapLab'),
-      nB = document.getElementById('nB');
+      cwr = document.getElementById('cwr'), gapLab = document.getElementById('gapLab');
   var LA = lA.getTotalLength(), LB = lB.getTotalLength();
   lA.style.strokeDasharray = LA; lB.style.strokeDasharray = LB;
   function set(p){
@@ -314,7 +266,6 @@ addEventListener('scroll', function(){
     cwr.setAttribute('width', 60 + 900*p);
     var ga = p < 0.2 ? 0 : p < 0.3 ? (p-0.2)*10 : p < 0.7 ? 1 : Math.max(0, 1-(p-0.7)*6);
     gapLab.setAttribute('opacity', ga.toFixed(2));
-    nB.textContent = (0.41 + 0.52*p).toFixed(2);
   }
   if(RM){ set(1); return; }
   function onScroll(){
@@ -361,7 +312,7 @@ addEventListener('scroll', function(){
   var vers = ['Schema','Tools','Outcome','Policy','PII','Domain'];
   var traces = ['refund · a91f','sql · b204','refund · b311','lookup · c07e','contract · c19a','refund · d552','sql · d6f0','lookup · e113'];
   var fails = {1:2, 4:5, 6:1};
-  var st = document.getElementById('mxSt'), nEl = document.getElementById('mxN');
+  var st = document.getElementById('mxSt');
   var html = '<span></span>';
   vers.forEach(function(v){ html += '<span class="ch">'+v+'</span>'; });
   html += '<span class="ch" style="text-align:right">verdict</span>';
@@ -381,7 +332,7 @@ addEventListener('scroll', function(){
     cells.forEach(function(c){ c.className = 'cell'; });
     rhs.forEach(function(r){ r.classList.remove('on'); });
     vds.forEach(function(v){ v.className = 'vd'; v.textContent = '—'; });
-    nEl.textContent = '0'; st.textContent = 'verifying…'; st.className = 'st';
+    st.textContent = 'verifying…'; st.className = 'st';
   }
   function finalRow(ri){
     var bad = fails[ri] !== undefined;
@@ -391,13 +342,13 @@ addEventListener('scroll', function(){
   }
   function run(){
     clear(); reset();
-    var ms = 240, checks = 0, gold = 0, rej = 0;
+    var ms = 240;
     traces.forEach(function(_, ri){
       at(ms, function(){ rhs[ri].classList.add('on'); });
       var stop = fails[ri] !== undefined ? fails[ri] : 5;
       rowCells(ri).forEach(function(c, ci){
         if(ci > stop) return;
-        at(ms, function(){ c.classList.add('scan'); nEl.textContent = ++checks; });
+        at(ms, function(){ c.classList.add('scan'); });
         at(ms + 180, function(){
           c.classList.remove('scan');
           if(fails[ri] === ci){ c.classList.add('fail'); st.textContent = 'rejected: ' + vers[ci].toLowerCase() + ' check'; st.className = 'st r'; }
@@ -407,8 +358,7 @@ addEventListener('scroll', function(){
       });
       at(ms + 200, function(){
         finalRow(ri);
-        if(fails[ri] === undefined) gold++; else rej++;
-        st.textContent = gold + ' golden · ' + rej + ' rejected'; st.className = 'st g';
+        if(fails[ri] === undefined){ st.textContent = 'admitted to the golden set'; st.className = 'st g'; }
       });
       ms += 260;
     });
@@ -420,7 +370,7 @@ addEventListener('scroll', function(){
       rowCells(ri).forEach(function(c, ci){ var f = fails[ri]; c.className = 'cell ' + (f === undefined ? '' : ci === f ? 'fail' : ci < f ? 'ok' : ''); });
       finalRow(ri);
     });
-    nEl.textContent = '41'; st.textContent = '5 golden · 3 rejected'; st.className = 'st g';
+    st.textContent = 'admitted to the golden set'; st.className = 'st g';
     return;
   }
   io([g], function(el, vis){ if(vis) run(); else clear(); });
@@ -432,41 +382,31 @@ addEventListener('scroll', function(){
 (function(){
   var box = document.getElementById('fn'); if(!box) return;
   var st = document.getElementById('fnSt');
+  // each step narrows what survives — the bar widths show the shape, not a count
   var rows = [
-    ['Collected', 'raw traces', 1284000],
-    ['Deduplicated', 'near-copies merged', 612400],
-    ['Verified', 'every check passed', 248900],
-    ['Conflicts resolved', 'contradictions dropped', 231700],
-    ['Golden set v14', 'admitted', 212480, 1]
+    ['Collected', 'raw traces', 100],
+    ['Deduplicated', 'near-copies merged', 62],
+    ['Verified', 'every check passed', 34],
+    ['Conflicts resolved', 'contradictions dropped', 30],
+    ['Golden set', 'admitted', 28, 1]
   ];
-  var max = rows[0][2];
   box.innerHTML = rows.map(function(r){
-    return '<div class="fn-row'+(r[3]?' gd':'')+'"><span class="k">'+r[0]+'<em>'+r[1]+'</em></span><span class="fn-track"><i></i></span><span class="v">0</span></div>';
+    return '<div class="fn-row'+(r[3]?' gd':'')+'"><span class="k">'+r[0]+'<em>'+r[1]+'</em></span><span class="fn-track"><i></i></span></div>';
   }).join('');
-  var bars = box.querySelectorAll('.fn-track i'), vals = box.querySelectorAll('.v');
+  var bars = box.querySelectorAll('.fn-track i');
   var timers = [];
   function clear(){ timers.forEach(clearTimeout); timers = []; }
-  function fill(i, instant){
-    bars[i].style.width = Math.max(2, rows[i][2]/max*100) + '%';
-    if(instant){ vals[i].textContent = fmt(rows[i][2]); return; }
-    var t0 = performance.now();
-    (function step(now){
-      var k = Math.min(1, (now - t0)/1100), e = 1 - Math.pow(1-k, 3);
-      vals[i].textContent = fmt(rows[i][2]*e);
-      if(k < 1) raf(step);
-    })(t0);
-  }
+  function fill(i){ bars[i].style.width = rows[i][2] + '%'; }
   function run(){
     clear();
     bars.forEach(function(b){ b.style.transition = 'none'; b.style.width = '0'; });
-    vals.forEach(function(v){ v.textContent = '0'; });
     void box.offsetWidth;
     bars.forEach(function(b){ b.style.transition = ''; });
     st.textContent = 'refining';
     rows.forEach(function(_, i){ timers.push(setTimeout(function(){ fill(i); st.textContent = rows[i][0].toLowerCase(); }, 200 + i*520)); });
-    timers.push(setTimeout(function(){ st.textContent = 'cycle 14 complete'; }, 200 + rows.length*520 + 900));
+    timers.push(setTimeout(function(){ st.textContent = 'cycle complete'; }, 200 + rows.length*520 + 900));
   }
-  if(RM){ rows.forEach(function(_, i){ fill(i, true); }); st.textContent = 'cycle 14 complete'; return; }
+  if(RM){ rows.forEach(function(_, i){ fill(i); }); st.textContent = 'cycle complete'; return; }
   io([box], function(el, vis){ if(vis) run(); else clear(); });
 })();
 
@@ -476,8 +416,6 @@ addEventListener('scroll', function(){
 (function(){
   var svg = document.getElementById('rcsvg'); if(!svg) return;
   var ev = document.getElementById('rcEval'), rw = document.getElementById('rcRew'), dot = document.getElementById('rcDot');
-  var stepEl = document.getElementById('rcStep'), evV = document.getElementById('rcEvalV'),
-      rwV = document.getElementById('rcRewV'), gapV = document.getElementById('rcGapV');
   var N = 120, E, R, live = false, k = 0, last = 0, hold = 0;
   function X(i){ return 40 + (i/(N-1))*510; }
   function Y(v){ return 20 + (1-v)*250; }
@@ -498,11 +436,6 @@ addEventListener('scroll', function(){
     ev.setAttribute('points', pe.join(' ')); rw.setAttribute('points', pr.join(' '));
     var j = Math.max(0, n-1);
     dot.setAttribute('cx', X(j)); dot.setAttribute('cy', Y(E[j]));
-    stepEl.textContent = fmt(j/(N-1)*2400);
-    evV.textContent = E[j].toFixed(2); rwV.textContent = R[j].toFixed(2);
-    var gp = E[j] - 0.92;
-    gapV.textContent = (gp >= 0 ? '+' : '−') + Math.abs(gp).toFixed(2);
-    gapV.style.color = gp >= -0.005 ? 'var(--gold)' : '';
   }
   gen();
   if(RM){ show(N); return; }
@@ -528,32 +461,30 @@ addEventListener('scroll', function(){
    ========================================================= */
 (function(){
   var box = document.getElementById('ho'); if(!box) return;
-  var own = document.getElementById('splitOwn'), fr = document.getElementById('splitFr');
+  var own = document.getElementById('splitOwn');
   var rows = [
-    ['Order lookup', 41, 99],
-    ['Refund triage', 28, 97],
-    ['SQL reports', 9, 91],
-    ['Contract clause review', 3, 74],
-    ['Escalations', 6, null]
+    ['Order lookup', 'owned', 'matches the frontier'],
+    ['Refund triage', 'owned', 'matches the frontier'],
+    ['SQL reports', 'shadow', 'close, still answering in shadow'],
+    ['Contract clause review', 'training', 'still training'],
+    ['Escalations', 'frontier', 'not verifiable — stays on the frontier']
   ];
-  function state(v){ return v === null ? ['frontier',''] : v >= 95 ? ['owned','go'] : v >= 85 ? ['shadow','sh'] : ['training','']; }
+  var W = {owned:96, shadow:72, training:44, frontier:0};
+  var CLS = {owned:'go', shadow:'sh', training:'', frontier:''};
   box.innerHTML = rows.map(function(r){
-    var s = state(r[2]);
-    return '<div class="ho-row"><span class="k">'+r[0]+'<em>'+r[1]+'k traces / wk · '+(r[2]===null?'not verifiable':r[2]+'% of frontier')+'</em></span>'
-      + '<span class="ho-bar"><i class="'+(s[1]==='go'?'go':'')+'" data-w="'+(r[2]||0)+'"></i><b></b></span>'
-      + '<span class="s '+s[1]+'">'+s[0]+'</span></div>';
+    return '<div class="ho-row"><span class="k">'+r[0]+'<em>'+r[2]+'</em></span>'
+      + '<span class="ho-bar"><i class="'+(CLS[r[1]]==='go'?'go':'')+'" data-w="'+W[r[1]]+'"></i><b></b></span>'
+      + '<span class="s '+CLS[r[1]]+'">'+r[1]+'</span></div>';
   }).join('');
-  var total = rows.reduce(function(a,r){ return a + r[1]; }, 0);
-  var ownedShare = Math.round(rows.reduce(function(a,r){ return a + (r[2] !== null && r[2] >= 95 ? r[1] : 0); }, 0) / total * 100);
   var bars = box.querySelectorAll('.ho-bar i');
+  // the split bar shows which side of the gate the work sits on, not a traffic number
+  var ownedShare = Math.round(rows.filter(function(r){ return r[1] === 'owned'; }).length / rows.length * 100);
   function go(on){
     bars.forEach(function(b, i){
       b.style.transitionDelay = on ? (i*0.12) + 's' : '0s';
       b.style.width = on ? b.getAttribute('data-w') + '%' : '0';
     });
     own.style.flexBasis = on ? ownedShare + '%' : '0%';
-    own.textContent = 'your model ' + (on ? ownedShare : 0) + '%';
-    fr.textContent = 'frontier ' + (on ? 100 - ownedShare : 100) + '%';
   }
   if(RM){ go(true); return; }
   io([box], function(el, vis){ go(vis); });
@@ -645,7 +576,7 @@ addEventListener('scroll', function(){
       return '<li class="vb-c"><span class="dot"></span><span class="q">' + c[0] + '</span><span class="e"></span></li>';
     }).join('');
     fillEl.style.width = '0'; fillEl.className = '';
-    n.textContent = '—'; n.className = 'vb-n';
+    n.textContent = 'pending'; n.className = 'vb-n';
     verdict.className = 'vb-verdict'; verdict.textContent = 'Waiting for a verdict…';
     return Array.prototype.slice.call(list.children);
   }
@@ -661,7 +592,7 @@ addEventListener('scroll', function(){
     var pass = ex.checks.every(function(c){ return c[2]; });
     fillEl.className = pass ? '' : 'no';
     fillEl.style.width = pass ? '100%' : '3%';
-    n.textContent = pass ? '1.00' : '0.00'; n.className = 'vb-n ' + (pass ? 'g' : 'r');
+    n.textContent = pass ? 'rewarded' : 'no reward'; n.className = 'vb-n ' + (pass ? 'g' : 'r');
     verdict.className = 'vb-verdict ' + (pass ? 'g' : 'r');
     verdict.innerHTML = pass ? ex.yes : ex.no;
     st.textContent = pass ? 'golden' : 'rejected';

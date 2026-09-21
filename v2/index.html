@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>katyar — own the model your agents are already teaching</title>
 <meta name="description" content="katyar turns the traces your AI agents already generate into a verified golden dataset, and uses it to continuously train an open model on your data — until it matches the frontier model it learned from.">
-<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="alternate icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -13,21 +15,6 @@
 </head>
 <body>
 <div id="prog"></div>
-
-<div class="tick-bar" aria-hidden="true">
-  <div class="tick-in">
-    <span><i class="ia"></i> golden set v14 · 212,480 verified examples</span>
-    <span><i class="ig"></i> refund-triage handed off · parity 97%</span>
-    <span><i class="ir"></i> 18,204 traces rejected by verifiers this week</span>
-    <span><i class="ib"></i> bio.assay_protocol v1.3 · custom verifier published</span>
-    <span><i class="ig"></i> sql-reports in shadow · parity 91%</span>
-    <span><i class="ia"></i> golden set v14 · 212,480 verified examples</span>
-    <span><i class="ig"></i> refund-triage handed off · parity 97%</span>
-    <span><i class="ir"></i> 18,204 traces rejected by verifiers this week</span>
-    <span><i class="ib"></i> bio.assay_protocol v1.3 · custom verifier published</span>
-    <span><i class="ig"></i> sql-reports in shadow · parity 91%</span>
-  </div>
-</div>
 
 <header>
   <div class="bar">
@@ -40,7 +27,7 @@
       <a href="about.html">About</a>
     </nav>
     <a class="pill o" href="#start">Sign in</a>
-    <a class="pill" href="#start">Start with one agent <span class="ar">→</span></a>
+    <a class="pill" href="#start">Book demo <span class="ar">→</span></a>
     <details class="mnav">
       <summary aria-label="Menu"><span></span></summary>
       <div class="mnav-panel">
@@ -67,7 +54,7 @@
       </h1>
       <p class="sub rv">Every call your agents make to a frontier model is a lesson. We collect it, verify it, refine it into a golden dataset — and train an open model on it until it does the job just as well. On your data. In your walls.</p>
       <div class="hero-acts rv">
-        <a class="pill lg" href="#start">Start with one agent <span class="ar">→</span></a>
+        <a class="pill lg" href="#start">Book demo <span class="ar">→</span></a>
         <a class="pill o lg" href="#pipeline">See the pipeline</a>
       </div>
     </div>
@@ -75,14 +62,8 @@
     <aside class="pt rv in" aria-hidden="true">
       <div class="pt-hd"><b>Parity</b> · yours vs frontier <span class="lv"><i></i> live</span></div>
       <div id="ptRows"></div>
-      <div class="pt-ft"><span>handoff at 95%</span><span><b id="ptOwned">2</b> tasks owned</span></div>
+      <div class="pt-ft"><span>handoff once it matches the frontier</span><span>your model, task by task</span></div>
     </aside>
-  </div>
-  <div class="hud" aria-hidden="true">
-    <div><div class="k">Traces in</div><div class="v" id="hIn">0</div></div>
-    <div><div class="k">Golden</div><div class="v g" id="hGold">0</div></div>
-    <div><div class="k">Rejected</div><div class="v r" id="hRej">0</div></div>
-    <div><div class="k">Golden set</div><div class="v" id="hSet">v14</div></div>
   </div>
 </section>
 
@@ -105,11 +86,11 @@
       <div class="book cost">
         <div class="book-k"><span class="tagx">Today</span> What you pay for</div>
         <div class="rows">
-          <div class="row"><span class="k">AI calls</span><span class="v" id="bkCalls">0</span></div>
-          <div class="row"><span class="k">Spend</span><span class="v" id="bkSpend">$0</span></div>
+          <div class="row"><span class="k">Every agent call</span><span class="v">billed per token</span></div>
+          <div class="row"><span class="k">What the answer leaves behind</span><span class="v nil">a log line</span></div>
           <div class="row"><span class="k">Kept once the answer arrives</span><span class="v nil">nothing</span></div>
         </div>
-        <div class="tot"><span class="k">Left on your books</span><span class="v">$0</span></div>
+        <div class="tot"><span class="k">Left on your books</span><span class="v">nothing</span></div>
       </div>
 
       <div class="conv" aria-hidden="true">
@@ -120,9 +101,9 @@
       <div class="book gain">
         <div class="book-k"><span class="tagx g">Tomorrow</span> What you keep</div>
         <div class="rows">
-          <div class="row"><span class="k">Verified examples</span><span class="v g" id="bkEx">0</span></div>
-          <div class="row"><span class="k">Checks your team wrote</span><span class="v">38</span></div>
-          <div class="row"><span class="k">Tasks your model runs</span><span class="v">2 of 5</span></div>
+          <div class="row"><span class="k">Verified examples</span><span class="v g">kept, every one checked</span></div>
+          <div class="row"><span class="k">Checks your team wrote</span><span class="v">yours</span></div>
+          <div class="row"><span class="k">Tasks your model runs</span><span class="v">more every cycle</span></div>
           <div class="row"><span class="k">Model weights</span><span class="v ok">yours</span></div>
         </div>
         <div class="tot"><span class="k">Left on your books</span><span class="v it">compounding</span></div>
@@ -137,21 +118,21 @@
     <div class="head rv">
       <div>
         <span class="eb lab br">The parity curve</span>
-        <h2 class="d2">Frontier <span class="dv-num" id="nA">0.92</span>. <span class="it">Yours</span> <span class="dv-num g" id="nB">0.41</span>.</h2>
+        <h2 class="d2">The frontier sets the bar. <span class="it">Yours climbs to it.</span></h2>
       </div>
       <p class="p lg">A small open model starts out knowing nothing about your business. Train it on verified examples of your own work, cycle after cycle, and it climbs to the model it learned from. Scroll — watch the gap close.</p>
     </div>
 
     <div class="dv rv">
       <div class="dv-hd">
-        <span class="lab">Support agent · task success · 8 training cycles</span>
+        <span class="lab">Support agent · task success across training cycles</span>
         <span class="dv-key">
           <span><b style="border-color:#f1f0ed"></b> frontier model</span>
           <span><b style="border-color:#d5a24f"></b> your open model</span>
           <span><b style="border-color:#e8705c;border-top-style:dashed"></b> remaining gap</span>
         </span>
       </div>
-      <div class="chartwrap"><svg id="dvsvg" viewBox="0 0 1000 300" width="100%" role="img" aria-label="The frontier model holds flat at 0.92 task success. Your open model starts at 0.41 and climbs across eight training cycles until it matches and slightly passes the frontier model.">
+      <div class="chartwrap"><svg id="dvsvg" viewBox="0 0 1000 300" width="100%" role="img" aria-label="The frontier model holds flat. Your open model starts well below it and climbs across training cycles until it matches and slightly passes the frontier model.">
         <defs>
           <pattern id="htch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
             <line x1="0" y1="0" x2="0" y2="7" stroke="#e8705c" stroke-width="1" stroke-opacity=".5"/>
@@ -159,9 +140,6 @@
           <clipPath id="cw"><rect id="cwr" x="0" y="0" width="0" height="300"/></clipPath>
         </defs>
         <g stroke="rgba(241,240,237,.12)"><path d="M60 40h900M60 110h900M60 180h900M60 250h900"/></g>
-        <g font-family="IBM Plex Mono, monospace" font-size="10" fill="rgba(241,240,237,.34)">
-          <text x="16" y="44">1.0</text><text x="16" y="114">0.8</text><text x="16" y="184">0.6</text><text x="16" y="254">0.4</text>
-        </g>
         <g clip-path="url(#cw)">
           <path d="M60 68L960 68 960 64 760 72C660 88 600 106 520 128 440 150 380 178 300 196 220 214 160 240 60 246Z" fill="url(#htch)"/>
         </g>
@@ -239,7 +217,7 @@
           </div>
           <div class="crop"><span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
             <div class="fig">
-              <div class="fig-hd">Verification batch · 8 traces × 6 verifiers <span class="sp"><span id="mxN">0</span> checks</span></div>
+              <div class="fig-hd">Verification batch <span class="sp">every trace, every verifier</span></div>
               <div class="mx"><div class="mxg" id="mxg" aria-hidden="true"></div></div>
               <div class="fig-ft">
                 <span><i style="background:#dbece3"></i>Pass</span>
@@ -261,9 +239,9 @@
           </div>
           <div class="crop"><span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
             <div class="fig" id="fnFig">
-              <div class="fig-hd">Refinement · cycle 14 <span class="sp" id="fnSt">idle</span></div>
+              <div class="fig-hd">Refinement · this cycle <span class="sp" id="fnSt">idle</span></div>
               <div class="fn" id="fn"></div>
-              <div class="fig-ft"><span>re-graded against verifier stack v9</span><span class="st g" id="fnFt">golden set v14</span></div>
+              <div class="fig-ft"><span>re-graded against the current verifier stack</span><span class="st g" id="fnFt">golden set</span></div>
             </div>
           </div>
         </div>
@@ -278,25 +256,21 @@
           </div>
           <div class="crop"><span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
             <div class="fig">
-              <div class="fig-hd">Training run · open 8B base <span class="sp">step <span id="rcStep">0</span></span></div>
+              <div class="fig-hd">Training run · open-weights base <span class="sp">in progress</span></div>
               <div class="rc">
                 <svg id="rcsvg" viewBox="0 0 560 220" aria-hidden="true">
                   <g stroke="#e8e6e1"><path d="M40 20h510M40 70h510M40 120h510M40 170h510"/></g>
-                  <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#8e9198">
-                    <text x="6" y="23">1.0</text><text x="6" y="73">0.8</text><text x="6" y="123">0.6</text><text x="6" y="173">0.4</text>
-                  </g>
                   <path d="M40 40h510" stroke="#d33a26" stroke-dasharray="4 4" stroke-width="1"/>
-                  <text x="548" y="34" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#d33a26">FRONTIER ON SAME TASKS · 0.92</text>
+                  <text x="548" y="34" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#d33a26">FRONTIER ON THE SAME TASKS</text>
                   <polyline id="rcEval" fill="none" stroke="#0c0c0d" stroke-width="1.6" points=""/>
                   <polyline id="rcRew" fill="none" stroke="#d5a24f" stroke-width="1.2" opacity=".75" points=""/>
                   <circle id="rcDot" r="3.5" fill="#0c0c0d" cx="40" cy="195"/>
-                  <g font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8" fill="#8e9198"><text x="40" y="214">STEP 0</text><text x="550" y="214" text-anchor="end">STEP 2,400</text></g>
                 </svg>
               </div>
               <div class="rc-stats">
-                <div><div class="k">Held-out success</div><div class="v" id="rcEvalV">0.41</div></div>
-                <div><div class="k">Verifier reward</div><div class="v gold" id="rcRewV">0.38</div></div>
-                <div><div class="k">Gap to frontier</div><div class="v" id="rcGapV">−0.51</div></div>
+                <div><div class="k">Held-out success</div><div class="v">climbing</div></div>
+                <div><div class="k">Verifier reward</div><div class="v gold">rising</div></div>
+                <div><div class="k">Gap to frontier</div><div class="v">closing</div></div>
               </div>
             </div>
           </div>
@@ -312,9 +286,9 @@
           </div>
           <div class="crop"><span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
             <div class="fig" id="hoFig">
-              <div class="fig-hd">Parity gate · threshold 95% of frontier <span class="sp">this week</span></div>
+              <div class="fig-hd">Parity gate · measured against the frontier <span class="sp">this week</span></div>
               <div class="ho" id="ho"></div>
-              <div class="split"><span class="s-own" id="splitOwn">your model 0%</span><span class="s-fr" id="splitFr">frontier 100%</span></div>
+              <div class="split"><span class="s-own" id="splitOwn">your model</span><span class="s-fr" id="splitFr">frontier</span></div>
             </div>
           </div>
         </div>
@@ -346,8 +320,7 @@
           <text x="260" y="22" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2.2" fill="#1c46d6">CC · CONTINUOUS COLLECTION</text>
           <text x="260" y="508" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2.2" fill="#5d6067">CT · CONTINUOUS TRAINING</text>
           <circle cx="260" cy="260" r="74" fill="#f5ead3" stroke="#d5a24f"/>
-          <text x="260" y="254" text-anchor="middle" font-family="Inter Tight, sans-serif" font-weight="500" font-size="20" letter-spacing="-.5" fill="#0c0c0d">Golden set</text>
-          <text id="ringSet" x="260" y="276" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1.6" fill="#a8741c">V14 · 212,480</text>
+          <text x="260" y="266" text-anchor="middle" font-family="Inter Tight, sans-serif" font-weight="500" font-size="20" letter-spacing="-.5" fill="#0c0c0d">Golden set</text>
         </svg>
       </div>
 
@@ -428,25 +401,25 @@
           <div class="when">Stage 01</div><h3>Shadow</h3>
           <div class="who h">The L1 engineer</div><p>Watches the senior handle every ticket.</p>
           <div class="who m">Your model</div><p>Learns from frontier traces on your tasks. Serves no traffic.</p>
-          <div class="share" style="--w:0%"><div class="bar2"><i></i></div><div class="lb"><span>traffic owned</span><b>0%</b></div></div>
+          <div class="share" style="--w:0%"><div class="bar2"><i></i></div><div class="lb"><span>traffic owned</span><b>none</b></div></div>
         </div>
         <div class="stage" data-i="1">
           <div class="when">Stage 02</div><h3>Supervised</h3>
           <div class="who h">The L1 engineer</div><p>Takes easy tickets. A lead reviews every answer.</p>
           <div class="who m">Your model</div><p>Answers in shadow. Verifiers grade every output against the frontier.</p>
-          <div class="share" style="--w:15%"><div class="bar2"><i></i></div><div class="lb"><span>traffic owned</span><b>15%</b></div></div>
+          <div class="share" style="--w:15%"><div class="bar2"><i></i></div><div class="lb"><span>traffic owned</span><b>a little</b></div></div>
         </div>
         <div class="stage" data-i="2">
           <div class="when">Stage 03</div><h3>Trusted</h3>
           <div class="who h">The L1 engineer</div><p>Owns the routine queue. Escalates the strange ones.</p>
           <div class="who m">Your model</div><p>Tasks past parity route to it. Everything else falls back to frontier.</p>
-          <div class="share" style="--w:60%"><div class="bar2"><i></i></div><div class="lb"><span>traffic owned</span><b>60%</b></div></div>
+          <div class="share" style="--w:60%"><div class="bar2"><i></i></div><div class="lb"><span>traffic owned</span><b>most of the routine queue</b></div></div>
         </div>
         <div class="stage" data-i="3">
           <div class="when">Stage 04</div><h3>Owner</h3>
           <div class="who h">The L1 engineer</div><p>Knows your systems better than any new hire.</p>
           <div class="who m">Your model</div><p>Runs the domain. The frontier stays on call for the long tail.</p>
-          <div class="share" style="--w:90%"><div class="bar2"><i></i></div><div class="lb"><span>traffic owned</span><b>90%</b></div></div>
+          <div class="share" style="--w:90%"><div class="bar2"><i></i></div><div class="lb"><span>traffic owned</span><b>nearly all of it</b></div></div>
         </div>
       </div>
     </div>
@@ -476,7 +449,7 @@
         <h3>A model that's actually yours</h3>
         <p class="p">Open weights trained on your work, running where you choose. It knows your tools, your policies and your customers' vocabulary — and it doesn't change because someone else shipped a new version.</p>
         <div class="rows">
-          <div class="row"><span class="k">Weights</span><span class="v">yours · sha256 9c1e…a47b</span></div>
+          <div class="row"><span class="k">Weights</span><span class="v">yours to keep and run</span></div>
           <div class="row"><span class="k">Runs in</span><span class="v">your VPC · on-prem · air-gapped</span></div>
           <div class="row"><span class="k">Company context</span><span class="v ok">in the weights</span></div>
           <div class="row"><span class="k">Upstream price changes</span><span class="v ok">don't apply</span></div>
@@ -487,9 +460,9 @@
         <h3>Data that outlives any model</h3>
         <p class="p">Every example checked by verifiers before it's admitted. When a better open model ships, you retrain on it instead of starting over. In the next era, this is the balance-sheet item.</p>
         <div class="rows">
-          <div class="row"><span class="k">Verified examples</span><span class="v g">212,480</span></div>
+          <div class="row"><span class="k">What’s in it</span><span class="v g">only verified examples</span></div>
           <div class="row"><span class="k">Admission rule</span><span class="v">every verifier passes</span></div>
-          <div class="row"><span class="k">Versions</span><span class="v">v1 → v14</span></div>
+          <div class="row"><span class="k">Versions</span><span class="v">re-cut every cycle</span></div>
           <div class="row"><span class="k">Provenance</span><span class="v b">tracked per example</span></div>
         </div>
       </div></div>
@@ -572,7 +545,7 @@
         <h4>Still have questions?</h4>
         <p>We'll look at one of your agents with you and sketch its parity curve, live.</p>
         <div class="who"><span>Data pipeline</span><span>Verifier lab</span><span>Training &amp; deployment</span></div>
-        <a class="pill" href="#start">Book 30 minutes <span class="ar">→</span></a>
+        <a class="pill" href="#start">Book demo <span class="ar">→</span></a>
       </div>
       <div>
         <details><summary><span class="n">01</span><span>Isn't Claude better than any model we could own?</span><span class="pm"></span></summary>
@@ -623,7 +596,7 @@
   <div class="w">
     <div class="fg">
       <div>
-        <span class="lg2">katyar</span>
+        <span class="lg2"><i class="mk" aria-hidden="true"></i>katyar</span>
         <p>Continuous collection and continuous training. Turn your agents' work into a golden dataset and a model you own.</p>
       </div>
       <div><h5>Platform</h5><ul><li><a href="index.html#pipeline">Pipeline</a></li><li><a href="index.html#verifiers">Verifiers</a></li><li><a href="index.html#l1">The L1 method</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
