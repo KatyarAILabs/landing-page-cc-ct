@@ -5,9 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>katyar — own the model your agents are already teaching</title>
 <meta name="description" content="katyar turns the traces your AI agents already generate into a verified golden dataset, and uses it to continuously train an open model on your data — until it matches the frontier model it learned from.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="katyar">
+<meta property="og:title" content="katyar — own the model your agents are already teaching">
+<meta property="og:description" content="katyar turns the traces your AI agents already generate into a verified golden dataset, and uses it to continuously train an open model on your data — until it matches the frontier model it learned from.">
+<meta property="og:url" content="https://katyar.com/">
+<meta property="og:image" content="https://katyar.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://katyar.com/assets/og.png">
+<meta name="theme-color" content="#5E1A2A">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <link rel="alternate icon" type="image/png" href="assets/logo.png">
-<link rel="apple-touch-icon" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -127,31 +138,31 @@
       <div class="dv-hd">
         <span class="lab">Support agent · task success across training cycles</span>
         <span class="dv-key">
-          <span><b style="border-color:#f1f0ed"></b> frontier model</span>
-          <span><b style="border-color:#d5a24f"></b> your open model</span>
-          <span><b style="border-color:#e8705c;border-top-style:dashed"></b> remaining gap</span>
+          <span><b style="border-color:#FBF6F0"></b> frontier model</span>
+          <span><b style="border-color:#C97A40"></b> your open model</span>
+          <span><b style="border-color:#D0664F;border-top-style:dashed"></b> remaining gap</span>
         </span>
       </div>
       <div class="chartwrap"><svg id="dvsvg" viewBox="0 0 1000 300" width="100%" role="img" aria-label="The frontier model holds flat. Your open model starts well below it and climbs across training cycles until it matches and slightly passes the frontier model.">
         <defs>
           <pattern id="htch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="0" x2="0" y2="7" stroke="#e8705c" stroke-width="1" stroke-opacity=".5"/>
+            <line x1="0" y1="0" x2="0" y2="7" stroke="#D0664F" stroke-width="1" stroke-opacity=".5"/>
           </pattern>
           <clipPath id="cw"><rect id="cwr" x="0" y="0" width="0" height="300"/></clipPath>
         </defs>
-        <g stroke="rgba(241,240,237,.12)"><path d="M60 40h900M60 110h900M60 180h900M60 250h900"/></g>
+        <g stroke="rgba(251,246,240,.12)"><path d="M60 40h900M60 110h900M60 180h900M60 250h900"/></g>
         <g clip-path="url(#cw)">
           <path d="M60 68L960 68 960 64 760 72C660 88 600 106 520 128 440 150 380 178 300 196 220 214 160 240 60 246Z" fill="url(#htch)"/>
         </g>
-        <path id="lA" d="M60 68L960 68" fill="none" stroke="#f1f0ed" stroke-width="2"/>
-        <path id="lB" d="M60 246C160 240 220 214 300 196 380 178 440 150 520 128 600 106 660 88 760 72L960 64" fill="none" stroke="#d5a24f" stroke-width="2.4"/>
-        <g stroke="rgba(241,240,237,.26)" stroke-dasharray="3 5"><path d="M300 30v238M760 30v238"/></g>
-        <g font-family="IBM Plex Mono, monospace" font-size="9" fill="rgba(241,240,237,.42)" letter-spacing="1.4">
+        <path id="lA" d="M60 68L960 68" fill="none" stroke="#FBF6F0" stroke-width="2"/>
+        <path id="lB" d="M60 246C160 240 220 214 300 196 380 178 440 150 520 128 600 106 660 88 760 72L960 64" fill="none" stroke="#C97A40" stroke-width="2.4"/>
+        <g stroke="rgba(251,246,240,.26)" stroke-dasharray="3 5"><path d="M300 30v238M760 30v238"/></g>
+        <g font-family="IBM Plex Mono, monospace" font-size="9" fill="rgba(251,246,240,.42)" letter-spacing="1.4">
           <text x="308" y="282">FIRST GOLDEN SET</text><text x="768" y="282">PARITY · HANDOFF</text>
         </g>
-        <circle id="dA" cx="60" cy="68" r="3.6" fill="#f1f0ed"/>
-        <circle id="dB" cx="60" cy="246" r="3.6" fill="#d5a24f"/>
-        <text id="gapLab" x="380" y="112" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#f08c7c" opacity="0">GAP CLOSING</text>
+        <circle id="dA" cx="60" cy="68" r="3.6" fill="#FBF6F0"/>
+        <circle id="dB" cx="60" cy="246" r="3.6" fill="#C97A40"/>
+        <text id="gapLab" x="380" y="112" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#E08A78" opacity="0">GAP CLOSING</text>
       </svg></div>
     </div>
 
@@ -259,12 +270,12 @@
               <div class="fig-hd">Training run · open-weights base <span class="sp">in progress</span></div>
               <div class="rc">
                 <svg id="rcsvg" viewBox="0 0 560 220" aria-hidden="true">
-                  <g stroke="#e8e6e1"><path d="M40 20h510M40 70h510M40 120h510M40 170h510"/></g>
-                  <path d="M40 40h510" stroke="#d33a26" stroke-dasharray="4 4" stroke-width="1"/>
-                  <text x="548" y="34" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#d33a26">FRONTIER ON THE SAME TASKS</text>
-                  <polyline id="rcEval" fill="none" stroke="#0c0c0d" stroke-width="1.6" points=""/>
-                  <polyline id="rcRew" fill="none" stroke="#d5a24f" stroke-width="1.2" opacity=".75" points=""/>
-                  <circle id="rcDot" r="3.5" fill="#0c0c0d" cx="40" cy="195"/>
+                  <g stroke="#EFE4DA"><path d="M40 20h510M40 70h510M40 120h510M40 170h510"/></g>
+                  <path d="M40 40h510" stroke="#B0303B" stroke-dasharray="4 4" stroke-width="1"/>
+                  <text x="548" y="34" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#B0303B">FRONTIER ON THE SAME TASKS</text>
+                  <polyline id="rcEval" fill="none" stroke="#2A0C14" stroke-width="1.6" points=""/>
+                  <polyline id="rcRew" fill="none" stroke="#C97A40" stroke-width="1.2" opacity=".75" points=""/>
+                  <circle id="rcDot" r="3.5" fill="#2A0C14" cx="40" cy="195"/>
                 </svg>
               </div>
               <div class="rc-stats">
@@ -311,16 +322,16 @@
     <div class="loop">
       <div class="crop"><span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
         <svg id="ring" viewBox="0 0 520 520" role="img" aria-label="A closed loop: gateway capture, structure and redact, verify, golden dataset, RL training, parity gate and deploy, then back to capture.">
-          <circle cx="260" cy="260" r="188" fill="none" stroke="#dcdad4"/>
-          <path d="M95.5 165A190 190 0 0 1 424.5 165" fill="none" stroke="#1c46d6" stroke-width="1.6" opacity=".5"/>
-          <path d="M424.5 355A190 190 0 0 1 95.5 355" fill="none" stroke="#0c0c0d" stroke-width="1.6" stroke-dasharray="4 4" opacity=".45"/>
-          <circle id="comet" cx="260" cy="72" r="5" fill="#0c0c0d"/>
-          <circle id="cometHalo" cx="260" cy="72" r="14" fill="none" stroke="#0c0c0d" opacity=".25"/>
+          <circle cx="260" cy="260" r="188" fill="none" stroke="#E6D9CE"/>
+          <path d="M95.5 165A190 190 0 0 1 424.5 165" fill="none" stroke="#5E1A2A" stroke-width="1.6" opacity=".5"/>
+          <path d="M424.5 355A190 190 0 0 1 95.5 355" fill="none" stroke="#2A0C14" stroke-width="1.6" stroke-dasharray="4 4" opacity=".45"/>
+          <circle id="comet" cx="260" cy="72" r="5" fill="#2A0C14"/>
+          <circle id="cometHalo" cx="260" cy="72" r="14" fill="none" stroke="#2A0C14" opacity=".25"/>
           <g id="ringNodes" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle"></g>
-          <text x="260" y="22" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2.2" fill="#1c46d6">CC · CONTINUOUS COLLECTION</text>
-          <text x="260" y="508" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2.2" fill="#5d6067">CT · CONTINUOUS TRAINING</text>
-          <circle cx="260" cy="260" r="74" fill="#f5ead3" stroke="#d5a24f"/>
-          <text x="260" y="266" text-anchor="middle" font-family="Inter Tight, sans-serif" font-weight="500" font-size="20" letter-spacing="-.5" fill="#0c0c0d">Golden set</text>
+          <text x="260" y="22" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2.2" fill="#5E1A2A">CC · CONTINUOUS COLLECTION</text>
+          <text x="260" y="508" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2.2" fill="#6A4A50">CT · CONTINUOUS TRAINING</text>
+          <circle cx="260" cy="260" r="74" fill="#F7E6D6" stroke="#C97A40"/>
+          <text x="260" y="266" text-anchor="middle" font-family="Inter Tight, sans-serif" font-weight="500" font-size="20" letter-spacing="-.5" fill="#2A0C14">Golden set</text>
         </svg>
       </div>
 
@@ -470,22 +481,22 @@
 
     <div class="fgrid rv">
       <div class="fc"><span class="no">01</span>
-        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0c0c0d" stroke-width="1.4"><path d="M12 3 20 6v6c0 4-3.4 7.4-8 9-4.6-1.6-8-5-8-9V6l8-3Z"/><path d="M9 12h6M12 9v6"/></svg></div>
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2A0C14" stroke-width="1.4"><path d="M12 3 20 6v6c0 4-3.4 7.4-8 9-4.6-1.6-8-5-8-9V6l8-3Z"/><path d="M9 12h6M12 9v6"/></svg></div>
         <h4>Sovereign by default</h4><p>Collection, training and inference inside your boundary. Nothing trains anyone else's model.</p></div>
       <div class="fc"><span class="no">02</span>
-        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0c0c0d" stroke-width="1.4"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.2 11 14.7l4.8-5"/></svg></div>
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2A0C14" stroke-width="1.4"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.2 11 14.7l4.8-5"/></svg></div>
         <h4>Nothing unverified gets in</h4><p>One failed check and a trace is out. The reason is logged, not hidden.</p></div>
       <div class="fc"><span class="no">03</span>
-        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0c0c0d" stroke-width="1.4"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v5h-5"/></svg></div>
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2A0C14" stroke-width="1.4"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v5h-5"/></svg></div>
         <h4>Continuous, not a project</h4><p>No one-off fine-tune that goes stale. Every week of production makes the next model better.</p></div>
       <div class="fc"><span class="no">04</span>
-        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0c0c0d" stroke-width="1.4"><path d="M4 7h11M4 17h7"/><path d="m15 4 3 3-3 3M11 14l3 3-3 3"/></svg></div>
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2A0C14" stroke-width="1.4"><path d="M4 7h11M4 17h7"/><path d="m15 4 3 3-3 3M11 14l3 3-3 3"/></svg></div>
         <h4>Frontier stays on call</h4><p>Tasks below parity keep routing to the frontier model. No big-bang cutover, ever.</p></div>
       <div class="fc"><span class="no">05</span>
-        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0c0c0d" stroke-width="1.4"><path d="M3 6h4l3 5 3 3 3 2h5"/><path d="M18 13l3 3-3 3"/></svg></div>
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2A0C14" stroke-width="1.4"><path d="M3 6h4l3 5 3 3 3 2h5"/><path d="M18 13l3 3-3 3"/></svg></div>
         <h4>A cost curve that falls</h4><p>Each task handed off moves spend from per-token rent to infrastructure you run.</p></div>
       <div class="fc"><span class="no">06</span>
-        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0c0c0d" stroke-width="1.4"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/><path d="M15 4h5v5M9 20H4v-5"/></svg></div>
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2A0C14" stroke-width="1.4"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/><path d="M15 4h5v5M9 20H4v-5"/></svg></div>
         <h4>Swap the base, keep the gains</h4><p>Better open weights next quarter? Retrain on the same golden set and move on.</p></div>
     </div>
   </div>

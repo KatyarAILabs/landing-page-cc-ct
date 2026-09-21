@@ -5,9 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Research — katyar</title>
 <meta name="description" content="katyar's research agenda: specialist open models that match frontier models on a company's repeated tasks, trained on verified outcomes instead of preferences.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="katyar">
+<meta property="og:title" content="Research — katyar">
+<meta property="og:description" content="katyar's research agenda: specialist open models that match frontier models on a company's repeated tasks, trained on verified outcomes instead of preferences.">
+<meta property="og:url" content="https://katyar.com/research.html">
+<meta property="og:image" content="https://katyar.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://katyar.com/assets/og.png">
+<meta name="theme-color" content="#5E1A2A">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <link rel="alternate icon" type="image/png" href="assets/logo.png">
-<link rel="apple-touch-icon" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -122,28 +133,28 @@
         <svg viewBox="0 0 560 270" role="img" aria-label="Illustrative chart. A model rewarded on checked outcomes climbs steadily in real task success. A model rewarded on preferences sees its grader score keep rising while its real task success levels off, leaving a gap.">
           <defs>
             <pattern id="rh" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-              <line x1="0" y1="0" x2="0" y2="6" stroke="#d33a26" stroke-width="1" stroke-opacity=".28"/>
+              <line x1="0" y1="0" x2="0" y2="6" stroke="#B0303B" stroke-width="1" stroke-opacity=".28"/>
             </pattern>
           </defs>
-          <g stroke="#e8e6e1"><path d="M44 30h500M44 80h500M44 130h500M44 180h500M44 230h500"/></g>
+          <g stroke="#EFE4DA"><path d="M44 30h500M44 80h500M44 130h500M44 180h500M44 230h500"/></g>
           <!-- gap between what the grader believes and what actually got done -->
           <path d="M250 96C330 82 430 56 540 44L540 118C430 114 330 106 250 104Z" fill="url(#rh)"/>
-          <path d="M44 180C120 150 180 116 250 96S430 56 540 44" fill="none" stroke="#0c0c0d" stroke-width="1.4" stroke-dasharray="4 4" opacity=".55"/>
-          <path d="M44 180C120 146 180 112 250 104S430 112 540 118" fill="none" stroke="#0c0c0d" stroke-width="1.8"/>
-          <path d="M44 180C140 168 200 128 290 100S460 62 540 56" fill="none" stroke="#d5a24f" stroke-width="2.4"/>
-          <circle cx="540" cy="56" r="3.5" fill="#d5a24f"/>
-          <circle cx="540" cy="118" r="3.5" fill="#0c0c0d"/>
+          <path d="M44 180C120 150 180 116 250 96S430 56 540 44" fill="none" stroke="#2A0C14" stroke-width="1.4" stroke-dasharray="4 4" opacity=".55"/>
+          <path d="M44 180C120 146 180 112 250 104S430 112 540 118" fill="none" stroke="#2A0C14" stroke-width="1.8"/>
+          <path d="M44 180C140 168 200 128 290 100S460 62 540 56" fill="none" stroke="#C97A40" stroke-width="2.4"/>
+          <circle cx="540" cy="56" r="3.5" fill="#C97A40"/>
+          <circle cx="540" cy="118" r="3.5" fill="#2A0C14"/>
           <g font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8">
-            <text x="290" y="140" fill="#d33a26">↑ GAP · SCORED WELL, DIDN'T DO THE WORK</text>
+            <text x="290" y="140" fill="#B0303B">↑ GAP · SCORED WELL, DIDN'T DO THE WORK</text>
           </g>
-          <g font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8" fill="#8e9198">
+          <g font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8" fill="#9A8580">
             <text x="44" y="258">START OF TRAINING</text><text x="540" y="258" text-anchor="end">LATER</text>
           </g>
         </svg>
       </div>
       <figcaption class="fig-ft rleg">
-        <span><i style="background:#d5a24f"></i>Checked outcomes · real success</span>
-        <span><i style="background:#0c0c0d"></i>Preferences · real success</span>
+        <span><i style="background:#C97A40"></i>Checked outcomes · real success</span>
+        <span><i style="background:#2A0C14"></i>Preferences · real success</span>
         <span><i class="dash"></i>Preferences · grader's score</span>
       </figcaption>
     </figure>

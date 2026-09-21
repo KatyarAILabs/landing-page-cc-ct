@@ -16,7 +16,7 @@
 .feat .prose h2{margin-top:0}
 .rfig{padding:14px 16px 6px}
 .rfig svg{width:100%;height:auto}
-.rleg i.dash{background:none;border-top:1.5px dashed #0c0c0d;height:0;width:12px;opacity:.6;vertical-align:3px}
+.rleg i.dash{background:none;border-top:1.5px dashed #2A0C14;height:0;width:12px;opacity:.6;vertical-align:3px}
 
 /* write-ups list */
 .wu-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-bottom:6px}

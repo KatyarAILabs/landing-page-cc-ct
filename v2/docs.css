@@ -6,7 +6,7 @@
 /* search */
 .dsearch{display:grid;gap:10px}
 .dsearch-box{display:flex;align-items:center;gap:10px;height:48px;padding:0 8px 0 16px;background:var(--card);border:1px solid var(--rule);border-radius:100px;transition:border-color .25s,box-shadow .25s}
-.dsearch-box:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(12,12,13,.06)}
+.dsearch-box:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(42,12,20,.06)}
 .dsearch-box svg{flex:none;color:var(--faint)}
 .dsearch-box input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:15px;color:var(--ink)}
 .dsearch-box input::placeholder{color:var(--faint)}

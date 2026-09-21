@@ -56,8 +56,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose pre{margin:0 0 20px;padding:16px 18px;overflow-x:auto;background:var(--night);color:var(--n-text);border-radius:3px;font-family:var(--mono);font-size:12.5px;line-height:1.75}
 .prose pre code{background:none;border:0;padding:0;color:inherit;font-size:inherit}
 .prose pre .c{color:var(--n-faint)}
-.prose pre .s{color:#e2b566}
-.prose pre .k{color:#7d99ff}
+.prose pre .s{color:#E0965A}
+.prose pre .k{color:#C97A40}
 .callout{margin:0 0 20px;padding:14px 16px;background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--gold-2);border-radius:3px;font-size:14.5px;color:var(--soft)}
 .callout b{font-weight:500;color:var(--ink)}
 
